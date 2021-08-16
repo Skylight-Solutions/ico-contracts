@@ -1,0 +1,4 @@
+node_modules/
+
+.secret_wallet_bsctest
+.secret_wallet_bscmain

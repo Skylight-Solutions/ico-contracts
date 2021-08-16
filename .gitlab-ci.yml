@@ -1,0 +1,8 @@
+before_script:
+  - docker info
+
+build-presale:
+  script: "docker-compose -f ./presale-frontend/docker-compose.yml build"
+
+start-presale:
+  script: "docker-compose -f ./presale-frontend/docker-compose.yml up -d"

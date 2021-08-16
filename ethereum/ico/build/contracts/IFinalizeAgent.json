@@ -1,0 +1,659 @@
+{
+  "contractName": "IFinalizeAgent",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "isSane",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_lockDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_unlockPeriod",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_unlockPercentage",
+          "type": "uint256"
+        }
+      ],
+      "name": "finalizeIco",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isFinalizeAgent",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_lockDate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_unlockPeriod\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_unlockPercentage\",\"type\":\"uint256\"}],\"name\":\"finalizeIco\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isFinalizeAgent\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isSane\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"finalizeIco(uint256,uint256,uint256)\":{\"notice\":\"Called once by ico if the sale was success. \"},\"isSane()\":{\"notice\":\"Check that we can release the token \"}},\"notice\":\"The default behavior for the crowdsale end. Unlock tokens.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/IFinalizeAgent.sol\":\"IFinalizeAgent\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/CollectCoin.sol\":{\"keccak256\":\"0xa42f5b3e05186f268c69e2b2d80e98c15e6fc1c490ce0c41cac4ab7ca95d6fa8\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://ffbe1635d22849a370c3e897e13e7838407e64106158ed660eb12bcbcc44b363\",\"dweb:/ipfs/QmYPdaH6Dhth1PohL2q6nG9xypa5J4ExuCZ9tTS1tmzo9z\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/CollectCoinIco.sol\":{\"keccak256\":\"0x69553a209279b0573b859e009b9fac597cf43cfa310dc237e5687274cdf8c369\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://909b5f5212e08110484c1a733d62ab34d8e2f9eaaa02071b5237afb958bfbc08\",\"dweb:/ipfs/Qmccrux3sGowuT53LyYagQrh9M5PNUA9AUjpmsTHU4p8z9\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/Haltable.sol\":{\"keccak256\":\"0xc956f297798888de351576e6c13d6e34937af3ea895dcf70da3f115e16be4b3d\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://20ec1a312fd8f85bb6d48f860d87dfef05066a2e0694f7d195cfbe6a436e2d2c\",\"dweb:/ipfs/QmbWoJiiqPh9ceH8FLbyCrcj8xiarQ4za4fQSsxzVFRUfT\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/ICollectCoinIco.sol\":{\"keccak256\":\"0x21aa579ae11f6f3ae18751e7e5d602bca05112253777970b24d2b733c8097adf\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://aa5ef77322fef979f672c56ffa6c580f6df52d6e64b758a9ded0bbe3b09284fb\",\"dweb:/ipfs/QmUBh15J6Ej3NNL3vDa7V5ptmL8c3poU4BWgyeaqCcHx7Z\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/IFinalizeAgent.sol\":{\"keccak256\":\"0x3a79cedd6dfcfba692aa443d8213c3f49d4ee6dfaa812a51e60605752eb832ac\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://c4b6ddd3ab6de9e1e3ddae28cac792b6df06f5bc82375ca08ed7f0c2167c99b7\",\"dweb:/ipfs/QmUNG14nF8V9ZwUjGQAde3PBq2uMXuRXDkmrRBcUxALhBM\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/IPricingStrategy.sol\":{\"keccak256\":\"0x789cb6c8395f173c60c380a44cd8f81e0e8b786cf0abde9bd12ba60ac301c3f8\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://a7b98a170c5695712f6d975c9bdbfc504ba3adfb3919f7625885e4207f9af244\",\"dweb:/ipfs/QmPUg15A3Hb7Wd4x6EVd5e7a5T3rwDrPLNdb6hbXzzjbto\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/PeriodicTimeLockedMonoWallet.sol\":{\"keccak256\":\"0x07a0281f736f889a5de9288748df06e49e631ff91b72ef065d709091e694d3aa\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b1e1ce11df05d92f31855c0069fe8fbd429ab48ead9c12f59154ef76d94ad4b3\",\"dweb:/ipfs/QmULzggnWryHR7pMbtzLcp9gAj5Vww7TeE7aGNSP8jhtQt\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/PeriodicTimeLockedWallet.sol\":{\"keccak256\":\"0xa47b626ece6260a493a3b6146d2ff19466028a2d80088e0604253d4a35eda680\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://a9be5fceadba5151e619446befd7dfd585486e3400c3ea5c0035de9e77638aa9\",\"dweb:/ipfs/QmSJDJ5zKeWPqZ6wVHJLqw5MjCb9VEfFby9JZguAfe7FaC\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/TimeLockedWallet.sol\":{\"keccak256\":\"0xee2e38ffdbf47080931f0b16b028c5cd5647b11f1a19001b02ea311b4ddadeba\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://3fccacbf85817321f6b81a62a0079792a1ee6a1bca5556f8d0ee941212d923f8\",\"dweb:/ipfs/QmbLWe8UF4nbvbGCzv9BdRyf5mM19K5yFCp8wDgMYHtWNv\"]},\"/home/eule/Projects/monaco-market/ethereum/ico/contracts/TimeLockedWalletFactory.sol\":{\"keccak256\":\"0xcb8ee66500b0ff0d72882447a1f654f4f9051a29907cc2f3da0ee71fb1b10440\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://6e7d2929e7e58d253b328a1836c1c33dfe75f52ed9b364f96a8d5f74672fe981\",\"dweb:/ipfs/QmeFbmYKAEUcW9wWgw7un7H9r3SAVeAonqerxQN1dqKD66\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xfeccdcbf67b2006a715e5af1a4c7556004d95b2806552b5cc54e46e8eb7e887b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://45b1f9043c0fb450272f20ed19ef633fcba1b129d602651a856dfae1a2243a2c\",\"dweb:/ipfs/QmUTSQiDikkcNtTtyDpkEwCM5ztVUUh9c1inBukn6HC5Vr\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4c3df1a7ca104b633a7d81c6c6f5192367d150cd5a32cba81f7f27012729013\",\"dweb:/ipfs/QmSim72e3ZVsfgZt8UceCvbiSuMRHR6WDsiamqNzZahGSY\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]},\"@openzeppelin/contracts/utils/math/SafeMath.sol\":{\"keccak256\":\"0x2526b7c6a366fc211bbc176078ab02b83833e7682abcc5b3bed9d700b34e2a3e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5f9529d3d365e8415155cee11394e0f7c0de2152b601b7e77508fce16cb4a509\",\"dweb:/ipfs/QmVhbcLVsAzvqfjsdLwy25XMjgVJm7Z3w2JCNiNbZF2GHT\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.0;\n\nimport \"./CollectCoinIco.sol\";\n\n/**\n * The default behavior for the crowdsale end.\n *\n * Unlock tokens.\n */\ninterface IFinalizeAgent {\n\n  /** Check that we can release the token */\n  function isSane() external view returns (bool);\n\n  /** Called once by ico if the sale was success. */\n  function finalizeIco(uint256 _lockDate, uint256 _unlockPeriod, uint256 _unlockPercentage) external;\n\n  function isFinalizeAgent() external view returns(bool);\n\n}",
+  "sourcePath": "/home/eule/Projects/monaco-market/ethereum/ico/contracts/IFinalizeAgent.sol",
+  "ast": {
+    "absolutePath": "/home/eule/Projects/monaco-market/ethereum/ico/contracts/IFinalizeAgent.sol",
+    "exportedSymbols": {
+      "CollectCoinIco": [
+        806
+      ],
+      "IFinalizeAgent": [
+        1275
+      ]
+    },
+    "id": 1276,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1251,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:23:6"
+      },
+      {
+        "absolutePath": "/home/eule/Projects/monaco-market/ethereum/ico/contracts/CollectCoinIco.sol",
+        "file": "./CollectCoinIco.sol",
+        "id": 1252,
+        "nodeType": "ImportDirective",
+        "scope": 1276,
+        "sourceUnit": 807,
+        "src": "64:30:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 1253,
+          "nodeType": "StructuredDocumentation",
+          "src": "96:75:6",
+          "text": " The default behavior for the crowdsale end.\n Unlock tokens."
+        },
+        "fullyImplemented": false,
+        "id": 1275,
+        "linearizedBaseContracts": [
+          1275
+        ],
+        "name": "IFinalizeAgent",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 1254,
+              "nodeType": "StructuredDocumentation",
+              "src": "202:42:6",
+              "text": "Check that we can release the token "
+            },
+            "functionSelector": "82771c8e",
+            "id": 1259,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isSane",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1255,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "262:2:6"
+            },
+            "returnParameters": {
+              "id": 1258,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1257,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1259,
+                  "src": "288:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1256,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "288:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "287:6:6"
+            },
+            "scope": 1275,
+            "src": "247:47:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1260,
+              "nodeType": "StructuredDocumentation",
+              "src": "298:50:6",
+              "text": "Called once by ico if the sale was success. "
+            },
+            "functionSelector": "202e053c",
+            "id": 1269,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "finalizeIco",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1267,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1262,
+                  "mutability": "mutable",
+                  "name": "_lockDate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1269,
+                  "src": "372:17:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1261,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "372:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1264,
+                  "mutability": "mutable",
+                  "name": "_unlockPeriod",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1269,
+                  "src": "391:21:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1263,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "391:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1266,
+                  "mutability": "mutable",
+                  "name": "_unlockPercentage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1269,
+                  "src": "414:25:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1265,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "414:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "371:69:6"
+            },
+            "returnParameters": {
+              "id": 1268,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "449:0:6"
+            },
+            "scope": 1275,
+            "src": "351:99:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "614cb904",
+            "id": 1274,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isFinalizeAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1270,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "478:2:6"
+            },
+            "returnParameters": {
+              "id": 1273,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1272,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1274,
+                  "src": "503:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1271,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "503:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "502:6:6"
+            },
+            "scope": 1275,
+            "src": "454:55:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1276,
+        "src": "172:340:6"
+      }
+    ],
+    "src": "39:473:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/eule/Projects/monaco-market/ethereum/ico/contracts/IFinalizeAgent.sol",
+    "exportedSymbols": {
+      "CollectCoinIco": [
+        806
+      ],
+      "IFinalizeAgent": [
+        1275
+      ]
+    },
+    "id": 1276,
+    "license": "UNLICENSED",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1251,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:23:6"
+      },
+      {
+        "absolutePath": "/home/eule/Projects/monaco-market/ethereum/ico/contracts/CollectCoinIco.sol",
+        "file": "./CollectCoinIco.sol",
+        "id": 1252,
+        "nodeType": "ImportDirective",
+        "scope": 1276,
+        "sourceUnit": 807,
+        "src": "64:30:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 1253,
+          "nodeType": "StructuredDocumentation",
+          "src": "96:75:6",
+          "text": " The default behavior for the crowdsale end.\n Unlock tokens."
+        },
+        "fullyImplemented": false,
+        "id": 1275,
+        "linearizedBaseContracts": [
+          1275
+        ],
+        "name": "IFinalizeAgent",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 1254,
+              "nodeType": "StructuredDocumentation",
+              "src": "202:42:6",
+              "text": "Check that we can release the token "
+            },
+            "functionSelector": "82771c8e",
+            "id": 1259,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isSane",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1255,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "262:2:6"
+            },
+            "returnParameters": {
+              "id": 1258,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1257,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1259,
+                  "src": "288:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1256,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "288:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "287:6:6"
+            },
+            "scope": 1275,
+            "src": "247:47:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1260,
+              "nodeType": "StructuredDocumentation",
+              "src": "298:50:6",
+              "text": "Called once by ico if the sale was success. "
+            },
+            "functionSelector": "202e053c",
+            "id": 1269,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "finalizeIco",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1267,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1262,
+                  "mutability": "mutable",
+                  "name": "_lockDate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1269,
+                  "src": "372:17:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1261,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "372:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1264,
+                  "mutability": "mutable",
+                  "name": "_unlockPeriod",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1269,
+                  "src": "391:21:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1263,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "391:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1266,
+                  "mutability": "mutable",
+                  "name": "_unlockPercentage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1269,
+                  "src": "414:25:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1265,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "414:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "371:69:6"
+            },
+            "returnParameters": {
+              "id": 1268,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "449:0:6"
+            },
+            "scope": 1275,
+            "src": "351:99:6",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "614cb904",
+            "id": 1274,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isFinalizeAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1270,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "478:2:6"
+            },
+            "returnParameters": {
+              "id": 1273,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1272,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1274,
+                  "src": "503:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1271,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "503:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "502:6:6"
+            },
+            "scope": 1275,
+            "src": "454:55:6",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1276,
+        "src": "172:340:6"
+      }
+    ],
+    "src": "39:473:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-08-06T15:24:07.025Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "finalizeIco(uint256,uint256,uint256)": {
+        "notice": "Called once by ico if the sale was success. "
+      },
+      "isSane()": {
+        "notice": "Check that we can release the token "
+      }
+    },
+    "notice": "The default behavior for the crowdsale end. Unlock tokens.",
+    "version": 1
+  }
+}
