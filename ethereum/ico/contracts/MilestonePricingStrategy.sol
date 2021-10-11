@@ -40,13 +40,13 @@ contract MilestonePricingStrategy is IPricingStrategy, Ownable
     milestones[0].soldTokenCount = 0;
     milestones[0].price = 0.05 * 10 ** 8;
 
-    milestones[1].soldTokenCount = 250 * 10**18;
+    milestones[1].soldTokenCount = 5000000 * 10**18;
     milestones[1].price = 0.065 * 10 ** 8;
 
-    milestones[2].soldTokenCount = 650 * 10**18;
+    milestones[2].soldTokenCount = 10000000 * 10**18;
     milestones[2].price = 0.075 * 10 ** 8;
 
-    milestones[3].soldTokenCount = 1050 * 10**18;
+    milestones[3].soldTokenCount = 15000000 * 10**18;
     milestones[3].price = 0.08 * 10 ** 8;
   }
 
@@ -88,11 +88,12 @@ contract MilestonePricingStrategy is IPricingStrategy, Ownable
    *
    * @param value - What is the value of the transaction send in as wei
    * @param tokensSold - how much tokens have been sold this far
+   * @param weiRaised - how much money has been raised this far in the main token sale - this number excludes presale
+   * @param msgSender - who is the investor of this transaction
    * @param decimals - how many decimal units the token has
    * @return tokenAmount - Amount of tokens the investor receives
    */
-  function calculateTokenAmount(uint value, uint tokensSold, uint decimals) 
-  override public view returns (uint tokenAmount)
+  function calculateTokenAmount(uint value, uint weiRaised, uint tokensSold, address msgSender, uint decimals) override public view returns (uint tokenAmount)
   {
     uint availableWei = value;
     tokenAmount = 0;
@@ -200,7 +201,6 @@ contract MilestonePricingStrategy is IPricingStrategy, Ownable
   /// @dev Get the current unitPrice and feedPrice.
   /// @return unitPrice == The current price or 0 if we are outside milestone period
   function getCurrentPrice(uint tokensSold) public view returns (uint unitPrice, uint feedPrice) {
-
     (, int price, , ,) = priceFeed.latestRoundData();
 
     (Milestone memory milestone, ) = getCurrentMilestone(tokensSold);
@@ -213,11 +213,10 @@ contract MilestonePricingStrategy is IPricingStrategy, Ownable
   }
 
   function getPriceFromFeed() private view returns (uint feedPrice) {
-
     (, int price, , ,) = priceFeed.latestRoundData();
 
-    feedPrice = uint(price);
-    return feedPrice;
+      feedPrice = uint(price);
+      return feedPrice;
   }
 
   /// @dev Get the current milestone or bail out if we are not in the milestone periods.

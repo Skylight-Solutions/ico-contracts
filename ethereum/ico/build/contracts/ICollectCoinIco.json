@@ -125,7 +125,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_beneficiary\",\"type\":\"address\"}],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_walletLockDate\",\"type\":\"uint256\"}],\"name\":\"finalize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllInvestors\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getState\",\"outputs\":[{\"internalType\":\"enum ICollectCoinIco.State\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isFull\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isMinimumGoalReached\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"reached\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenOwner\",\"type\":\"address\"}],\"name\":\"setTokenOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TimeLockedWalletFactory\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setWalletFactory\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_investor\",\"type\":\"address\"}],\"name\":\"tokenAmountOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyTokens(address)\":{\"details\":\"low level token purchase ***DO NOT OVERRIDE***\",\"params\":{\"_beneficiary\":\"Address performing the token purchase\"}},\"finalize(uint256)\":{\"params\":{\"_walletLockDate\":\"The time from when the locking calculations for the investor's time locked tokens begin to count\"}},\"isMinimumGoalReached()\":{\"returns\":{\"reached\":\"== true if the crowdsale has raised enough money to be a successful.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"finalize(uint256)\":{\"notice\":\"Finalize a succcesful crowdsale. The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\"},\"getState()\":{\"notice\":\"state machine management. We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale.\"},\"isFull()\":{\"notice\":\"Check if the current crowdsale is full and we can no longer sell any tokens.\"},\"setWalletFactory(address)\":{\"notice\":\"Allow to (re)set finalize agent. Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes.\"},\"tokenAmountOf(address)\":{\"notice\":\"How much tokens this crowdsale has credited for each investor address \"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/ICollectCoinIco.sol\":\"ICollectCoinIco\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/CollectCoin.sol\":{\"keccak256\":\"0x4812a283343daa2baaf5dec59778296f03efd00bb4424acabd5ad0bc5adc6ec5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://7a0fe570689c08b6285dee6b7a78ed42bbab11b46c545c37742e5d39d724a6e2\",\"dweb:/ipfs/QmReem7yMomrManhhfAQdHzmWafqVxodegdT3QKAapAW3S\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/ICollectCoinIco.sol\":{\"keccak256\":\"0xeafd526cf5d3371995ee66aabbafb0e53fc329ef8f12aa5689b595d1d0805c8c\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b5b0fc54653dfb5a6b5d65cd3461d0cfebcd6e6e9f9b2b16f06026f7929fa03e\",\"dweb:/ipfs/QmXX2DZb5zg8gHcmoEFHjQpR5yx5DAnXhoKhZAhvcRwW5D\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/PeriodicTimeLockedMonoWallet.sol\":{\"keccak256\":\"0xd70eed81947ee8423f73bccfa2469ade371bebf83235dd58c90f86cf99554d78\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://d7ca68be1604c9cf62f22acb463e044a189ea8f315d7179968383603cefb0599\",\"dweb:/ipfs/QmS3TkZxJg1z3Y7NCq5zd7ogvZBnGEHCGePhBSw6d5rqzH\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/TimeLockedWalletFactory.sol\":{\"keccak256\":\"0xcc4b3c08a19a1b45a1b948ed0b3282242c90847e1c29df4d18944f894d5f32cf\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://de2032bd4e8ee07497172186817b4b088a1307044e1df99d6dab0efb91979cf3\",\"dweb:/ipfs/QmX2JMDePHLGXZUivMGkBqA1Gxtb47RXozXY71T8xQJ7dz\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xfeccdcbf67b2006a715e5af1a4c7556004d95b2806552b5cc54e46e8eb7e887b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://45b1f9043c0fb450272f20ed19ef633fcba1b129d602651a856dfae1a2243a2c\",\"dweb:/ipfs/QmUTSQiDikkcNtTtyDpkEwCM5ztVUUh9c1inBukn6HC5Vr\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4c3df1a7ca104b633a7d81c6c6f5192367d150cd5a32cba81f7f27012729013\",\"dweb:/ipfs/QmSim72e3ZVsfgZt8UceCvbiSuMRHR6WDsiamqNzZahGSY\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]},\"@openzeppelin/contracts/utils/math/SafeMath.sol\":{\"keccak256\":\"0x2526b7c6a366fc211bbc176078ab02b83833e7682abcc5b3bed9d700b34e2a3e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5f9529d3d365e8415155cee11394e0f7c0de2152b601b7e77508fce16cb4a509\",\"dweb:/ipfs/QmVhbcLVsAzvqfjsdLwy25XMjgVJm7Z3w2JCNiNbZF2GHT\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_beneficiary\",\"type\":\"address\"}],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_walletLockDate\",\"type\":\"uint256\"}],\"name\":\"finalize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllInvestors\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getState\",\"outputs\":[{\"internalType\":\"enum ICollectCoinIco.State\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isFull\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isMinimumGoalReached\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"reached\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenOwner\",\"type\":\"address\"}],\"name\":\"setTokenOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TimeLockedWalletFactory\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setWalletFactory\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_investor\",\"type\":\"address\"}],\"name\":\"tokenAmountOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyTokens(address)\":{\"details\":\"low level token purchase ***DO NOT OVERRIDE***\",\"params\":{\"_beneficiary\":\"Address performing the token purchase\"}},\"finalize(uint256)\":{\"params\":{\"_walletLockDate\":\"The time from when the locking calculations for the investor's time locked tokens begin to count\"}},\"isMinimumGoalReached()\":{\"returns\":{\"reached\":\"== true if the crowdsale has raised enough money to be a successful.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"finalize(uint256)\":{\"notice\":\"Finalize a succcesful crowdsale. The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\"},\"getState()\":{\"notice\":\"state machine management. We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale.\"},\"isFull()\":{\"notice\":\"Check if the current crowdsale is full and we can no longer sell any tokens.\"},\"setWalletFactory(address)\":{\"notice\":\"Allow to (re)set finalize agent. Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes.\"},\"tokenAmountOf(address)\":{\"notice\":\"How much tokens this crowdsale has credited for each investor address \"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/ICollectCoinIco.sol\":\"ICollectCoinIco\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/CollectCoin.sol\":{\"keccak256\":\"0x4812a283343daa2baaf5dec59778296f03efd00bb4424acabd5ad0bc5adc6ec5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://7a0fe570689c08b6285dee6b7a78ed42bbab11b46c545c37742e5d39d724a6e2\",\"dweb:/ipfs/QmReem7yMomrManhhfAQdHzmWafqVxodegdT3QKAapAW3S\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/ICollectCoinIco.sol\":{\"keccak256\":\"0xeafd526cf5d3371995ee66aabbafb0e53fc329ef8f12aa5689b595d1d0805c8c\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b5b0fc54653dfb5a6b5d65cd3461d0cfebcd6e6e9f9b2b16f06026f7929fa03e\",\"dweb:/ipfs/QmXX2DZb5zg8gHcmoEFHjQpR5yx5DAnXhoKhZAhvcRwW5D\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/PeriodicTimeLockedMonoWallet.sol\":{\"keccak256\":\"0xd70eed81947ee8423f73bccfa2469ade371bebf83235dd58c90f86cf99554d78\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://d7ca68be1604c9cf62f22acb463e044a189ea8f315d7179968383603cefb0599\",\"dweb:/ipfs/QmS3TkZxJg1z3Y7NCq5zd7ogvZBnGEHCGePhBSw6d5rqzH\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/PeriodicTimeLockedWallet.sol\":{\"keccak256\":\"0xe1482b4292412bea801780dd83a74e3c5abaa10ed1c8243cf33823d574f94a41\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://c8f7d40147225faf4813d569bbe686937c5397007d868c80defea9b26008e36b\",\"dweb:/ipfs/QmY9tiwh2soFjuyJyZ3ExDaPxfU5Ja7DCCeshtXv5hyeTM\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/TimeLockedWallet.sol\":{\"keccak256\":\"0xee2e38ffdbf47080931f0b16b028c5cd5647b11f1a19001b02ea311b4ddadeba\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://3fccacbf85817321f6b81a62a0079792a1ee6a1bca5556f8d0ee941212d923f8\",\"dweb:/ipfs/QmbLWe8UF4nbvbGCzv9BdRyf5mM19K5yFCp8wDgMYHtWNv\"]},\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/TimeLockedWalletFactory.sol\":{\"keccak256\":\"0x9c81e9613dca3b5c30c53bc248187c713ce7765290ae3105b60e353ebec62aa0\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://d116f4246339c7c0e01cdaf23ede6b17cf53466d3e119f2b3bab72d99424ac2d\",\"dweb:/ipfs/QmP5tdV6j2q457Lja1oMeVmtf5Bt1tey3zwbbpHkAf8RQ5\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x6bb804a310218875e89d12c053e94a13a4607cdf7cc2052f3e52bd32a0dc50a1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b2ebbbe6d0011175bd9e7268b83de3f9c2f9d8d4cbfbaef12aff977d7d727163\",\"dweb:/ipfs/Qmd5c7Vxtis9wzkDNhxwc6A2QT5H9xn9kfjhx7qx44vpro\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xb03df8481a954604ad0c9125680893b2e3f7ff770fe470e38b89ac61b84e8072\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b34655953d18ba3a45b762fb6bdbb6549af69a27435e10ece178742bf70baf45\",\"dweb:/ipfs/QmcqjUoFLLMyx7dbwSHUnDBH6aphkVHXWQvQRRev5EAWEh\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://087318b21c528119f649899f5b5580566dd8d7b0303d4904bd0e8580c3545f14\",\"dweb:/ipfs/Qmbn5Mj7aUn8hJuQ8VrQjjEXRsXyJKykgnjR9p4C3nfLtL\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4c3df1a7ca104b633a7d81c6c6f5192367d150cd5a32cba81f7f27012729013\",\"dweb:/ipfs/QmSim72e3ZVsfgZt8UceCvbiSuMRHR6WDsiamqNzZahGSY\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0x90565a39ae45c80f0468dc96c7b20d0afc3055f344c8203a0c9258239f350b9f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://26e8b38a7ac8e7b4463af00cf7fff1bf48ae9875765bf4f7751e100124d0bc8c\",\"dweb:/ipfs/QmWcsmkVr24xmmjfnBQZoemFniXjj3vwT78Cz6uqZW1Hux\"]},\"@openzeppelin/contracts/utils/math/SafeMath.sol\":{\"keccak256\":\"0x8666f020bd8fc9dc14f07e2ebc52b5f236ab4cdde7c77679b08cb2f94730043b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://163776cbf565c722232393aa2d62cbe8a2ffb5805986abf4906c00e1e07450a6\",\"dweb:/ipfs/QmPZoN9T3cb6o8bGhjBPZcz7im8T8DWhpr3tjLwhJJHx9N\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -142,39 +142,45 @@
         49
       ],
       "Context": [
-        3132
+        3464
       ],
       "ERC20": [
-        3006
+        3339
       ],
       "ICollectCoinIco": [
-        1156
+        1123
       ],
       "IERC20": [
-        3084
+        3417
       ],
       "IERC20Metadata": [
-        3109
+        3442
       ],
       "Ownable": [
-        2499
+        2793
       ],
       "PeriodicTimeLockedMonoWallet": [
-        2079
+        2064
+      ],
+      "PeriodicTimeLockedWallet": [
+        2293
       ],
       "SafeMath": [
-        3444
+        3776
+      ],
+      "TimeLockedWallet": [
+        2405
       ],
       "TimeLockedWalletFactory": [
-        2297
+        2643
       ]
     },
-    "id": 1157,
+    "id": 1124,
     "license": "UNLICENSED",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1089,
+        "id": 1056,
         "literals": [
           "solidity",
           "^",
@@ -182,17 +188,17 @@
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "39:23:5"
+        "src": "39:23:4"
       },
       {
         "absolutePath": "/home/eule/Projects/ico-contracts/ethereum/ico/contracts/TimeLockedWalletFactory.sol",
         "file": "./TimeLockedWalletFactory.sol",
-        "id": 1090,
+        "id": 1057,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1157,
-        "sourceUnit": 2298,
-        "src": "64:39:5",
+        "scope": 1124,
+        "sourceUnit": 2644,
+        "src": "64:39:4",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -202,42 +208,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1156,
+        "id": 1123,
         "linearizedBaseContracts": [
-          1156
+          1123
         ],
         "name": "ICollectCoinIco",
-        "nameLocation": "115:15:5",
+        "nameLocation": "115:15:4",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 1091,
+              "id": 1058,
               "nodeType": "StructuredDocumentation",
-              "src": "139:76:5",
+              "src": "139:76:4",
               "text": "How much tokens this crowdsale has credited for each investor address "
             },
             "functionSelector": "97b150ca",
-            "id": 1098,
+            "id": 1065,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "tokenAmountOf",
-            "nameLocation": "229:13:5",
+            "nameLocation": "229:13:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1094,
+              "id": 1061,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1093,
+                  "id": 1060,
                   "mutability": "mutable",
                   "name": "_investor",
-                  "nameLocation": "251:9:5",
+                  "nameLocation": "251:9:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1098,
-                  "src": "243:17:5",
+                  "scope": 1065,
+                  "src": "243:17:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -245,10 +251,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1092,
+                    "id": 1059,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "243:7:5",
+                    "src": "243:7:4",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -258,7 +264,312 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "242:19:5"
+              "src": "242:19:4"
+            },
+            "returnParameters": {
+              "id": 1064,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1063,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1065,
+                  "src": "285:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1062,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "285:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "284:9:4"
+            },
+            "scope": 1123,
+            "src": "220:74:4",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "canonicalName": "ICollectCoinIco.State",
+            "id": 1073,
+            "members": [
+              {
+                "id": 1066,
+                "name": "Unknown",
+                "nameLocation": "780:7:4",
+                "nodeType": "EnumValue",
+                "src": "780:7:4"
+              },
+              {
+                "id": 1067,
+                "name": "Preparing",
+                "nameLocation": "789:9:4",
+                "nodeType": "EnumValue",
+                "src": "789:9:4"
+              },
+              {
+                "id": 1068,
+                "name": "Funding",
+                "nameLocation": "800:7:4",
+                "nodeType": "EnumValue",
+                "src": "800:7:4"
+              },
+              {
+                "id": 1069,
+                "name": "Success",
+                "nameLocation": "809:7:4",
+                "nodeType": "EnumValue",
+                "src": "809:7:4"
+              },
+              {
+                "id": 1070,
+                "name": "Failure",
+                "nameLocation": "818:7:4",
+                "nodeType": "EnumValue",
+                "src": "818:7:4"
+              },
+              {
+                "id": 1071,
+                "name": "Finalized",
+                "nameLocation": "827:9:4",
+                "nodeType": "EnumValue",
+                "src": "827:9:4"
+              },
+              {
+                "id": 1072,
+                "name": "Refunding",
+                "nameLocation": "838:9:4",
+                "nodeType": "EnumValue",
+                "src": "838:9:4"
+              }
+            ],
+            "name": "State",
+            "nameLocation": "773:5:4",
+            "nodeType": "EnumDefinition",
+            "src": "768:81:4"
+          },
+          {
+            "documentation": {
+              "id": 1074,
+              "nodeType": "StructuredDocumentation",
+              "src": "867:294:4",
+              "text": " Finalize a succcesful crowdsale.\n The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\n @param _walletLockDate The time from when the locking calculations for the investor's time locked tokens begin to count"
+            },
+            "functionSelector": "05261aea",
+            "id": 1079,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "finalize",
+            "nameLocation": "1175:8:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1077,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1076,
+                  "mutability": "mutable",
+                  "name": "_walletLockDate",
+                  "nameLocation": "1192:15:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1079,
+                  "src": "1184:23:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1075,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1184:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1183:25:4"
+            },
+            "returnParameters": {
+              "id": 1078,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1217:0:4"
+            },
+            "scope": 1123,
+            "src": "1166:52:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1080,
+              "nodeType": "StructuredDocumentation",
+              "src": "1224:155:4",
+              "text": " Allow to (re)set finalize agent.\n Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes."
+            },
+            "functionSelector": "7ebf879c",
+            "id": 1086,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setWalletFactory",
+            "nameLocation": "1461:16:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1084,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1083,
+                  "mutability": "mutable",
+                  "name": "addr",
+                  "nameLocation": "1502:4:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1086,
+                  "src": "1478:28:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2643",
+                    "typeString": "contract TimeLockedWalletFactory"
+                  },
+                  "typeName": {
+                    "id": 1082,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1081,
+                      "name": "TimeLockedWalletFactory",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2643,
+                      "src": "1478:23:4"
+                    },
+                    "referencedDeclaration": 2643,
+                    "src": "1478:23:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2643",
+                      "typeString": "contract TimeLockedWalletFactory"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1477:30:4"
+            },
+            "returnParameters": {
+              "id": 1085,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1516:0:4"
+            },
+            "scope": 1123,
+            "src": "1452:65:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "18e02bd9",
+            "id": 1091,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTokenOwner",
+            "nameLocation": "1531:13:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1089,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1088,
+                  "mutability": "mutable",
+                  "name": "_tokenOwner",
+                  "nameLocation": "1553:11:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1091,
+                  "src": "1545:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1087,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1545:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1544:21:4"
+            },
+            "returnParameters": {
+              "id": 1090,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1574:0:4"
+            },
+            "scope": 1123,
+            "src": "1522:53:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1092,
+              "nodeType": "StructuredDocumentation",
+              "src": "1581:171:4",
+              "text": " state machine management.\n We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale."
+            },
+            "functionSelector": "1865c57d",
+            "id": 1098,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getState",
+            "nameLocation": "1766:8:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1093,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1774:2:4"
             },
             "returnParameters": {
               "id": 1097,
@@ -272,380 +583,75 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 1098,
-                  "src": "285:7:5",
+                  "src": "1795:5:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1095,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "285:7:5",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "284:9:5"
-            },
-            "scope": 1156,
-            "src": "220:74:5",
-            "stateMutability": "view",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "canonicalName": "ICollectCoinIco.State",
-            "id": 1106,
-            "members": [
-              {
-                "id": 1099,
-                "name": "Unknown",
-                "nameLocation": "780:7:5",
-                "nodeType": "EnumValue",
-                "src": "780:7:5"
-              },
-              {
-                "id": 1100,
-                "name": "Preparing",
-                "nameLocation": "789:9:5",
-                "nodeType": "EnumValue",
-                "src": "789:9:5"
-              },
-              {
-                "id": 1101,
-                "name": "Funding",
-                "nameLocation": "800:7:5",
-                "nodeType": "EnumValue",
-                "src": "800:7:5"
-              },
-              {
-                "id": 1102,
-                "name": "Success",
-                "nameLocation": "809:7:5",
-                "nodeType": "EnumValue",
-                "src": "809:7:5"
-              },
-              {
-                "id": 1103,
-                "name": "Failure",
-                "nameLocation": "818:7:5",
-                "nodeType": "EnumValue",
-                "src": "818:7:5"
-              },
-              {
-                "id": 1104,
-                "name": "Finalized",
-                "nameLocation": "827:9:5",
-                "nodeType": "EnumValue",
-                "src": "827:9:5"
-              },
-              {
-                "id": 1105,
-                "name": "Refunding",
-                "nameLocation": "838:9:5",
-                "nodeType": "EnumValue",
-                "src": "838:9:5"
-              }
-            ],
-            "name": "State",
-            "nameLocation": "773:5:5",
-            "nodeType": "EnumDefinition",
-            "src": "768:81:5"
-          },
-          {
-            "documentation": {
-              "id": 1107,
-              "nodeType": "StructuredDocumentation",
-              "src": "867:294:5",
-              "text": " Finalize a succcesful crowdsale.\n The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\n @param _walletLockDate The time from when the locking calculations for the investor's time locked tokens begin to count"
-            },
-            "functionSelector": "05261aea",
-            "id": 1112,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "finalize",
-            "nameLocation": "1175:8:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1110,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1109,
-                  "mutability": "mutable",
-                  "name": "_walletLockDate",
-                  "nameLocation": "1192:15:5",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1112,
-                  "src": "1184:23:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1108,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1184:7:5",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1183:25:5"
-            },
-            "returnParameters": {
-              "id": 1111,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1217:0:5"
-            },
-            "scope": 1156,
-            "src": "1166:52:5",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "documentation": {
-              "id": 1113,
-              "nodeType": "StructuredDocumentation",
-              "src": "1224:155:5",
-              "text": " Allow to (re)set finalize agent.\n Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes."
-            },
-            "functionSelector": "7ebf879c",
-            "id": 1119,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "setWalletFactory",
-            "nameLocation": "1461:16:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1117,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1116,
-                  "mutability": "mutable",
-                  "name": "addr",
-                  "nameLocation": "1502:4:5",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1119,
-                  "src": "1478:28:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2297",
-                    "typeString": "contract TimeLockedWalletFactory"
-                  },
-                  "typeName": {
-                    "id": 1115,
-                    "nodeType": "UserDefinedTypeName",
-                    "pathNode": {
-                      "id": 1114,
-                      "name": "TimeLockedWalletFactory",
-                      "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2297,
-                      "src": "1478:23:5"
-                    },
-                    "referencedDeclaration": 2297,
-                    "src": "1478:23:5",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2297",
-                      "typeString": "contract TimeLockedWalletFactory"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1477:30:5"
-            },
-            "returnParameters": {
-              "id": 1118,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1516:0:5"
-            },
-            "scope": 1156,
-            "src": "1452:65:5",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "functionSelector": "18e02bd9",
-            "id": 1124,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "setTokenOwner",
-            "nameLocation": "1531:13:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1122,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1121,
-                  "mutability": "mutable",
-                  "name": "_tokenOwner",
-                  "nameLocation": "1553:11:5",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1124,
-                  "src": "1545:19:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 1120,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1545:7:5",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1544:21:5"
-            },
-            "returnParameters": {
-              "id": 1123,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1574:0:5"
-            },
-            "scope": 1156,
-            "src": "1522:53:5",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "documentation": {
-              "id": 1125,
-              "nodeType": "StructuredDocumentation",
-              "src": "1581:171:5",
-              "text": " state machine management.\n We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale."
-            },
-            "functionSelector": "1865c57d",
-            "id": 1131,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getState",
-            "nameLocation": "1766:8:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1126,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1774:2:5"
-            },
-            "returnParameters": {
-              "id": 1130,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1129,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nameLocation": "-1:-1:-1",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1131,
-                  "src": "1795:5:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_State_$1106",
+                    "typeIdentifier": "t_enum$_State_$1073",
                     "typeString": "enum ICollectCoinIco.State"
                   },
                   "typeName": {
-                    "id": 1128,
+                    "id": 1095,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1127,
+                      "id": 1094,
                       "name": "State",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1106,
-                      "src": "1795:5:5"
+                      "referencedDeclaration": 1073,
+                      "src": "1795:5:4"
                     },
-                    "referencedDeclaration": 1106,
-                    "src": "1795:5:5",
+                    "referencedDeclaration": 1073,
+                    "src": "1795:5:4",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_State_$1106",
+                      "typeIdentifier": "t_enum$_State_$1073",
                       "typeString": "enum ICollectCoinIco.State"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1794:7:5"
+              "src": "1794:7:4"
             },
-            "scope": 1156,
-            "src": "1757:45:5",
+            "scope": 1123,
+            "src": "1757:45:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 1132,
+              "id": 1099,
               "nodeType": "StructuredDocumentation",
-              "src": "1809:93:5",
+              "src": "1809:93:4",
               "text": " Check if the current crowdsale is full and we can no longer sell any tokens."
             },
             "functionSelector": "babd3d9a",
-            "id": 1137,
+            "id": 1104,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isFull",
-            "nameLocation": "1916:6:5",
+            "nameLocation": "1916:6:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1133,
+              "id": 1100,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1922:2:5"
+              "src": "1922:2:4"
             },
             "returnParameters": {
-              "id": 1136,
+              "id": 1103,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1135,
+                  "id": 1102,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1137,
-                  "src": "1948:4:5",
+                  "scope": 1104,
+                  "src": "1948:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -653,10 +659,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1134,
+                    "id": 1101,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1948:4:5",
+                    "src": "1948:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -665,48 +671,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1947:6:5"
+              "src": "1947:6:4"
             },
-            "scope": 1156,
-            "src": "1907:47:5",
+            "scope": 1123,
+            "src": "1907:47:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 1138,
+              "id": 1105,
               "nodeType": "StructuredDocumentation",
-              "src": "1960:101:5",
+              "src": "1960:101:4",
               "text": " @return reached == true if the crowdsale has raised enough money to be a successful."
             },
             "functionSelector": "7c2e08a3",
-            "id": 1143,
+            "id": 1110,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isMinimumGoalReached",
-            "nameLocation": "2075:20:5",
+            "nameLocation": "2075:20:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1139,
+              "id": 1106,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2095:2:5"
+              "src": "2095:2:4"
             },
             "returnParameters": {
-              "id": 1142,
+              "id": 1109,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1141,
+                  "id": 1108,
                   "mutability": "mutable",
                   "name": "reached",
-                  "nameLocation": "2126:7:5",
+                  "nameLocation": "2126:7:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1143,
-                  "src": "2121:12:5",
+                  "scope": 1110,
+                  "src": "2121:12:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -714,10 +720,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1140,
+                    "id": 1107,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2121:4:5",
+                    "src": "2121:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -726,42 +732,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2120:14:5"
+              "src": "2120:14:4"
             },
-            "scope": 1156,
-            "src": "2066:69:5",
+            "scope": 1123,
+            "src": "2066:69:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "d0a2f2c4",
-            "id": 1149,
+            "id": 1116,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAllInvestors",
-            "nameLocation": "2150:15:5",
+            "nameLocation": "2150:15:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1144,
+              "id": 1111,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2165:2:5"
+              "src": "2165:2:4"
             },
             "returnParameters": {
-              "id": 1148,
+              "id": 1115,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1147,
+                  "id": 1114,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1149,
-                  "src": "2186:16:5",
+                  "scope": 1116,
+                  "src": "2186:16:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -770,19 +776,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1145,
+                      "id": 1112,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "2186:7:5",
+                      "src": "2186:7:4",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 1146,
+                    "id": 1113,
                     "nodeType": "ArrayTypeName",
-                    "src": "2186:9:5",
+                    "src": "2186:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -791,42 +797,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2185:18:5"
+              "src": "2185:18:4"
             },
-            "scope": 1156,
-            "src": "2141:63:5",
+            "scope": 1123,
+            "src": "2141:63:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 1150,
+              "id": 1117,
               "nodeType": "StructuredDocumentation",
-              "src": "2210:132:5",
+              "src": "2210:132:4",
               "text": " @dev low level token purchase ***DO NOT OVERRIDE***\n @param _beneficiary Address performing the token purchase"
             },
             "functionSelector": "ec8ac4d8",
-            "id": 1155,
+            "id": 1122,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "buyTokens",
-            "nameLocation": "2356:9:5",
+            "nameLocation": "2356:9:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1153,
+              "id": 1120,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1152,
+                  "id": 1119,
                   "mutability": "mutable",
                   "name": "_beneficiary",
-                  "nameLocation": "2374:12:5",
+                  "nameLocation": "2374:12:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1155,
-                  "src": "2366:20:5",
+                  "scope": 1122,
+                  "src": "2366:20:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -834,10 +840,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1151,
+                    "id": 1118,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2366:7:5",
+                    "src": "2366:7:4",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -847,27 +853,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2365:22:5"
+              "src": "2365:22:4"
             },
             "returnParameters": {
-              "id": 1154,
+              "id": 1121,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2404:0:5"
+              "src": "2404:0:4"
             },
-            "scope": 1156,
-            "src": "2347:58:5",
+            "scope": 1123,
+            "src": "2347:58:4",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1157,
-        "src": "105:2302:5",
+        "scope": 1124,
+        "src": "105:2302:4",
         "usedErrors": []
       }
     ],
-    "src": "39:2368:5"
+    "src": "39:2368:4"
   },
   "legacyAST": {
     "absolutePath": "/home/eule/Projects/ico-contracts/ethereum/ico/contracts/ICollectCoinIco.sol",
@@ -876,39 +882,45 @@
         49
       ],
       "Context": [
-        3132
+        3464
       ],
       "ERC20": [
-        3006
+        3339
       ],
       "ICollectCoinIco": [
-        1156
+        1123
       ],
       "IERC20": [
-        3084
+        3417
       ],
       "IERC20Metadata": [
-        3109
+        3442
       ],
       "Ownable": [
-        2499
+        2793
       ],
       "PeriodicTimeLockedMonoWallet": [
-        2079
+        2064
+      ],
+      "PeriodicTimeLockedWallet": [
+        2293
       ],
       "SafeMath": [
-        3444
+        3776
+      ],
+      "TimeLockedWallet": [
+        2405
       ],
       "TimeLockedWalletFactory": [
-        2297
+        2643
       ]
     },
-    "id": 1157,
+    "id": 1124,
     "license": "UNLICENSED",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1089,
+        "id": 1056,
         "literals": [
           "solidity",
           "^",
@@ -916,17 +928,17 @@
           ".6"
         ],
         "nodeType": "PragmaDirective",
-        "src": "39:23:5"
+        "src": "39:23:4"
       },
       {
         "absolutePath": "/home/eule/Projects/ico-contracts/ethereum/ico/contracts/TimeLockedWalletFactory.sol",
         "file": "./TimeLockedWalletFactory.sol",
-        "id": 1090,
+        "id": 1057,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1157,
-        "sourceUnit": 2298,
-        "src": "64:39:5",
+        "scope": 1124,
+        "sourceUnit": 2644,
+        "src": "64:39:4",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -936,42 +948,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1156,
+        "id": 1123,
         "linearizedBaseContracts": [
-          1156
+          1123
         ],
         "name": "ICollectCoinIco",
-        "nameLocation": "115:15:5",
+        "nameLocation": "115:15:4",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 1091,
+              "id": 1058,
               "nodeType": "StructuredDocumentation",
-              "src": "139:76:5",
+              "src": "139:76:4",
               "text": "How much tokens this crowdsale has credited for each investor address "
             },
             "functionSelector": "97b150ca",
-            "id": 1098,
+            "id": 1065,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "tokenAmountOf",
-            "nameLocation": "229:13:5",
+            "nameLocation": "229:13:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1094,
+              "id": 1061,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1093,
+                  "id": 1060,
                   "mutability": "mutable",
                   "name": "_investor",
-                  "nameLocation": "251:9:5",
+                  "nameLocation": "251:9:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1098,
-                  "src": "243:17:5",
+                  "scope": 1065,
+                  "src": "243:17:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -979,10 +991,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1092,
+                    "id": 1059,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "243:7:5",
+                    "src": "243:7:4",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -992,7 +1004,312 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "242:19:5"
+              "src": "242:19:4"
+            },
+            "returnParameters": {
+              "id": 1064,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1063,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1065,
+                  "src": "285:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1062,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "285:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "284:9:4"
+            },
+            "scope": 1123,
+            "src": "220:74:4",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "canonicalName": "ICollectCoinIco.State",
+            "id": 1073,
+            "members": [
+              {
+                "id": 1066,
+                "name": "Unknown",
+                "nameLocation": "780:7:4",
+                "nodeType": "EnumValue",
+                "src": "780:7:4"
+              },
+              {
+                "id": 1067,
+                "name": "Preparing",
+                "nameLocation": "789:9:4",
+                "nodeType": "EnumValue",
+                "src": "789:9:4"
+              },
+              {
+                "id": 1068,
+                "name": "Funding",
+                "nameLocation": "800:7:4",
+                "nodeType": "EnumValue",
+                "src": "800:7:4"
+              },
+              {
+                "id": 1069,
+                "name": "Success",
+                "nameLocation": "809:7:4",
+                "nodeType": "EnumValue",
+                "src": "809:7:4"
+              },
+              {
+                "id": 1070,
+                "name": "Failure",
+                "nameLocation": "818:7:4",
+                "nodeType": "EnumValue",
+                "src": "818:7:4"
+              },
+              {
+                "id": 1071,
+                "name": "Finalized",
+                "nameLocation": "827:9:4",
+                "nodeType": "EnumValue",
+                "src": "827:9:4"
+              },
+              {
+                "id": 1072,
+                "name": "Refunding",
+                "nameLocation": "838:9:4",
+                "nodeType": "EnumValue",
+                "src": "838:9:4"
+              }
+            ],
+            "name": "State",
+            "nameLocation": "773:5:4",
+            "nodeType": "EnumDefinition",
+            "src": "768:81:4"
+          },
+          {
+            "documentation": {
+              "id": 1074,
+              "nodeType": "StructuredDocumentation",
+              "src": "867:294:4",
+              "text": " Finalize a succcesful crowdsale.\n The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\n @param _walletLockDate The time from when the locking calculations for the investor's time locked tokens begin to count"
+            },
+            "functionSelector": "05261aea",
+            "id": 1079,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "finalize",
+            "nameLocation": "1175:8:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1077,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1076,
+                  "mutability": "mutable",
+                  "name": "_walletLockDate",
+                  "nameLocation": "1192:15:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1079,
+                  "src": "1184:23:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1075,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1184:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1183:25:4"
+            },
+            "returnParameters": {
+              "id": 1078,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1217:0:4"
+            },
+            "scope": 1123,
+            "src": "1166:52:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1080,
+              "nodeType": "StructuredDocumentation",
+              "src": "1224:155:4",
+              "text": " Allow to (re)set finalize agent.\n Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes."
+            },
+            "functionSelector": "7ebf879c",
+            "id": 1086,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setWalletFactory",
+            "nameLocation": "1461:16:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1084,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1083,
+                  "mutability": "mutable",
+                  "name": "addr",
+                  "nameLocation": "1502:4:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1086,
+                  "src": "1478:28:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2643",
+                    "typeString": "contract TimeLockedWalletFactory"
+                  },
+                  "typeName": {
+                    "id": 1082,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 1081,
+                      "name": "TimeLockedWalletFactory",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2643,
+                      "src": "1478:23:4"
+                    },
+                    "referencedDeclaration": 2643,
+                    "src": "1478:23:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2643",
+                      "typeString": "contract TimeLockedWalletFactory"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1477:30:4"
+            },
+            "returnParameters": {
+              "id": 1085,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1516:0:4"
+            },
+            "scope": 1123,
+            "src": "1452:65:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "18e02bd9",
+            "id": 1091,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setTokenOwner",
+            "nameLocation": "1531:13:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1089,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1088,
+                  "mutability": "mutable",
+                  "name": "_tokenOwner",
+                  "nameLocation": "1553:11:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1091,
+                  "src": "1545:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1087,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1545:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1544:21:4"
+            },
+            "returnParameters": {
+              "id": 1090,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1574:0:4"
+            },
+            "scope": 1123,
+            "src": "1522:53:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1092,
+              "nodeType": "StructuredDocumentation",
+              "src": "1581:171:4",
+              "text": " state machine management.\n We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale."
+            },
+            "functionSelector": "1865c57d",
+            "id": 1098,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getState",
+            "nameLocation": "1766:8:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1093,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1774:2:4"
             },
             "returnParameters": {
               "id": 1097,
@@ -1006,380 +1323,75 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 1098,
-                  "src": "285:7:5",
+                  "src": "1795:5:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1095,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "285:7:5",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "284:9:5"
-            },
-            "scope": 1156,
-            "src": "220:74:5",
-            "stateMutability": "view",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "canonicalName": "ICollectCoinIco.State",
-            "id": 1106,
-            "members": [
-              {
-                "id": 1099,
-                "name": "Unknown",
-                "nameLocation": "780:7:5",
-                "nodeType": "EnumValue",
-                "src": "780:7:5"
-              },
-              {
-                "id": 1100,
-                "name": "Preparing",
-                "nameLocation": "789:9:5",
-                "nodeType": "EnumValue",
-                "src": "789:9:5"
-              },
-              {
-                "id": 1101,
-                "name": "Funding",
-                "nameLocation": "800:7:5",
-                "nodeType": "EnumValue",
-                "src": "800:7:5"
-              },
-              {
-                "id": 1102,
-                "name": "Success",
-                "nameLocation": "809:7:5",
-                "nodeType": "EnumValue",
-                "src": "809:7:5"
-              },
-              {
-                "id": 1103,
-                "name": "Failure",
-                "nameLocation": "818:7:5",
-                "nodeType": "EnumValue",
-                "src": "818:7:5"
-              },
-              {
-                "id": 1104,
-                "name": "Finalized",
-                "nameLocation": "827:9:5",
-                "nodeType": "EnumValue",
-                "src": "827:9:5"
-              },
-              {
-                "id": 1105,
-                "name": "Refunding",
-                "nameLocation": "838:9:5",
-                "nodeType": "EnumValue",
-                "src": "838:9:5"
-              }
-            ],
-            "name": "State",
-            "nameLocation": "773:5:5",
-            "nodeType": "EnumDefinition",
-            "src": "768:81:5"
-          },
-          {
-            "documentation": {
-              "id": 1107,
-              "nodeType": "StructuredDocumentation",
-              "src": "867:294:5",
-              "text": " Finalize a succcesful crowdsale.\n The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\n @param _walletLockDate The time from when the locking calculations for the investor's time locked tokens begin to count"
-            },
-            "functionSelector": "05261aea",
-            "id": 1112,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "finalize",
-            "nameLocation": "1175:8:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1110,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1109,
-                  "mutability": "mutable",
-                  "name": "_walletLockDate",
-                  "nameLocation": "1192:15:5",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1112,
-                  "src": "1184:23:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1108,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1184:7:5",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1183:25:5"
-            },
-            "returnParameters": {
-              "id": 1111,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1217:0:5"
-            },
-            "scope": 1156,
-            "src": "1166:52:5",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "documentation": {
-              "id": 1113,
-              "nodeType": "StructuredDocumentation",
-              "src": "1224:155:5",
-              "text": " Allow to (re)set finalize agent.\n Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes."
-            },
-            "functionSelector": "7ebf879c",
-            "id": 1119,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "setWalletFactory",
-            "nameLocation": "1461:16:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1117,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1116,
-                  "mutability": "mutable",
-                  "name": "addr",
-                  "nameLocation": "1502:4:5",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1119,
-                  "src": "1478:28:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2297",
-                    "typeString": "contract TimeLockedWalletFactory"
-                  },
-                  "typeName": {
-                    "id": 1115,
-                    "nodeType": "UserDefinedTypeName",
-                    "pathNode": {
-                      "id": 1114,
-                      "name": "TimeLockedWalletFactory",
-                      "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2297,
-                      "src": "1478:23:5"
-                    },
-                    "referencedDeclaration": 2297,
-                    "src": "1478:23:5",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$2297",
-                      "typeString": "contract TimeLockedWalletFactory"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1477:30:5"
-            },
-            "returnParameters": {
-              "id": 1118,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1516:0:5"
-            },
-            "scope": 1156,
-            "src": "1452:65:5",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "functionSelector": "18e02bd9",
-            "id": 1124,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "setTokenOwner",
-            "nameLocation": "1531:13:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1122,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1121,
-                  "mutability": "mutable",
-                  "name": "_tokenOwner",
-                  "nameLocation": "1553:11:5",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1124,
-                  "src": "1545:19:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 1120,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1545:7:5",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1544:21:5"
-            },
-            "returnParameters": {
-              "id": 1123,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1574:0:5"
-            },
-            "scope": 1156,
-            "src": "1522:53:5",
-            "stateMutability": "nonpayable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "documentation": {
-              "id": 1125,
-              "nodeType": "StructuredDocumentation",
-              "src": "1581:171:5",
-              "text": " state machine management.\n We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale."
-            },
-            "functionSelector": "1865c57d",
-            "id": 1131,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "getState",
-            "nameLocation": "1766:8:5",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 1126,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1774:2:5"
-            },
-            "returnParameters": {
-              "id": 1130,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1129,
-                  "mutability": "mutable",
-                  "name": "",
-                  "nameLocation": "-1:-1:-1",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1131,
-                  "src": "1795:5:5",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_State_$1106",
+                    "typeIdentifier": "t_enum$_State_$1073",
                     "typeString": "enum ICollectCoinIco.State"
                   },
                   "typeName": {
-                    "id": 1128,
+                    "id": 1095,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 1127,
+                      "id": 1094,
                       "name": "State",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 1106,
-                      "src": "1795:5:5"
+                      "referencedDeclaration": 1073,
+                      "src": "1795:5:4"
                     },
-                    "referencedDeclaration": 1106,
-                    "src": "1795:5:5",
+                    "referencedDeclaration": 1073,
+                    "src": "1795:5:4",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_State_$1106",
+                      "typeIdentifier": "t_enum$_State_$1073",
                       "typeString": "enum ICollectCoinIco.State"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1794:7:5"
+              "src": "1794:7:4"
             },
-            "scope": 1156,
-            "src": "1757:45:5",
+            "scope": 1123,
+            "src": "1757:45:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 1132,
+              "id": 1099,
               "nodeType": "StructuredDocumentation",
-              "src": "1809:93:5",
+              "src": "1809:93:4",
               "text": " Check if the current crowdsale is full and we can no longer sell any tokens."
             },
             "functionSelector": "babd3d9a",
-            "id": 1137,
+            "id": 1104,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isFull",
-            "nameLocation": "1916:6:5",
+            "nameLocation": "1916:6:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1133,
+              "id": 1100,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1922:2:5"
+              "src": "1922:2:4"
             },
             "returnParameters": {
-              "id": 1136,
+              "id": 1103,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1135,
+                  "id": 1102,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1137,
-                  "src": "1948:4:5",
+                  "scope": 1104,
+                  "src": "1948:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1387,10 +1399,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1134,
+                    "id": 1101,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1948:4:5",
+                    "src": "1948:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1399,48 +1411,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1947:6:5"
+              "src": "1947:6:4"
             },
-            "scope": 1156,
-            "src": "1907:47:5",
+            "scope": 1123,
+            "src": "1907:47:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 1138,
+              "id": 1105,
               "nodeType": "StructuredDocumentation",
-              "src": "1960:101:5",
+              "src": "1960:101:4",
               "text": " @return reached == true if the crowdsale has raised enough money to be a successful."
             },
             "functionSelector": "7c2e08a3",
-            "id": 1143,
+            "id": 1110,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isMinimumGoalReached",
-            "nameLocation": "2075:20:5",
+            "nameLocation": "2075:20:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1139,
+              "id": 1106,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2095:2:5"
+              "src": "2095:2:4"
             },
             "returnParameters": {
-              "id": 1142,
+              "id": 1109,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1141,
+                  "id": 1108,
                   "mutability": "mutable",
                   "name": "reached",
-                  "nameLocation": "2126:7:5",
+                  "nameLocation": "2126:7:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1143,
-                  "src": "2121:12:5",
+                  "scope": 1110,
+                  "src": "2121:12:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1448,10 +1460,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1140,
+                    "id": 1107,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2121:4:5",
+                    "src": "2121:4:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1460,42 +1472,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2120:14:5"
+              "src": "2120:14:4"
             },
-            "scope": 1156,
-            "src": "2066:69:5",
+            "scope": 1123,
+            "src": "2066:69:4",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "d0a2f2c4",
-            "id": 1149,
+            "id": 1116,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAllInvestors",
-            "nameLocation": "2150:15:5",
+            "nameLocation": "2150:15:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1144,
+              "id": 1111,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2165:2:5"
+              "src": "2165:2:4"
             },
             "returnParameters": {
-              "id": 1148,
+              "id": 1115,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1147,
+                  "id": 1114,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1149,
-                  "src": "2186:16:5",
+                  "scope": 1116,
+                  "src": "2186:16:4",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1504,19 +1516,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1145,
+                      "id": 1112,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "2186:7:5",
+                      "src": "2186:7:4",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 1146,
+                    "id": 1113,
                     "nodeType": "ArrayTypeName",
-                    "src": "2186:9:5",
+                    "src": "2186:9:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -1525,42 +1537,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2185:18:5"
+              "src": "2185:18:4"
             },
-            "scope": 1156,
-            "src": "2141:63:5",
+            "scope": 1123,
+            "src": "2141:63:4",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 1150,
+              "id": 1117,
               "nodeType": "StructuredDocumentation",
-              "src": "2210:132:5",
+              "src": "2210:132:4",
               "text": " @dev low level token purchase ***DO NOT OVERRIDE***\n @param _beneficiary Address performing the token purchase"
             },
             "functionSelector": "ec8ac4d8",
-            "id": 1155,
+            "id": 1122,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "buyTokens",
-            "nameLocation": "2356:9:5",
+            "nameLocation": "2356:9:4",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1153,
+              "id": 1120,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1152,
+                  "id": 1119,
                   "mutability": "mutable",
                   "name": "_beneficiary",
-                  "nameLocation": "2374:12:5",
+                  "nameLocation": "2374:12:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1155,
-                  "src": "2366:20:5",
+                  "scope": 1122,
+                  "src": "2366:20:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1568,10 +1580,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1151,
+                    "id": 1118,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2366:7:5",
+                    "src": "2366:7:4",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1581,27 +1593,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2365:22:5"
+              "src": "2365:22:4"
             },
             "returnParameters": {
-              "id": 1154,
+              "id": 1121,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2404:0:5"
+              "src": "2404:0:4"
             },
-            "scope": 1156,
-            "src": "2347:58:5",
+            "scope": 1123,
+            "src": "2347:58:4",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1157,
-        "src": "105:2302:5",
+        "scope": 1124,
+        "src": "105:2302:4",
         "usedErrors": []
       }
     ],
-    "src": "39:2368:5"
+    "src": "39:2368:4"
   },
   "compiler": {
     "name": "solc",
@@ -1609,7 +1621,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-08-16T13:27:28.600Z",
+  "updatedAt": "2021-10-11T21:57:49.557Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

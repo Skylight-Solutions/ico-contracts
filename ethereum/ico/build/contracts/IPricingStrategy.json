@@ -60,8 +60,18 @@
         },
         {
           "internalType": "uint256",
+          "name": "weiRaised",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
           "name": "tokensSold",
           "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "msgSender",
+          "type": "address"
         },
         {
           "internalType": "uint256",
@@ -81,7 +91,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokensSold\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"decimals\",\"type\":\"uint256\"}],\"name\":\"calculateTokenAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"totalTokensSold\",\"type\":\"uint256\"}],\"name\":\"currentUnitPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"unitPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"feedPrice\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isPricingStrategy\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isSane\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"calculateTokenAmount(uint256,uint256,uint256)\":{\"params\":{\"decimals\":\"- how many decimal units the token has\",\"tokensSold\":\"- how much tokens have been sold this far\",\"value\":\"- What is the value of the transaction send in as wei\"},\"returns\":{\"tokenAmount\":\"- Amount of tokens the investor receives\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"calculateTokenAmount(uint256,uint256,uint256)\":{\"notice\":\"When somebody tries to buy tokens for X eth, calculate how many tokens they get.\"},\"isPricingStrategy()\":{\"notice\":\"Interface declaration. \"},\"isSane()\":{\"notice\":\"Self check if all references are correctly set. Checks that pricing strategy matches crowdsale parameters.\"}},\"notice\":\"Interface for defining crowdsale pricing.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/IPricingStrategy.sol\":\"IPricingStrategy\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/IPricingStrategy.sol\":{\"keccak256\":\"0xc65d1b946c89d612b724d496f31a83692d262a4cd0b14f152530c1472a28995c\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://d317ba46f0539860022a62703ff49506fca55d78710aebb8dd64b387b7db16ab\",\"dweb:/ipfs/QmP3FxB3pjokKqK8cZSBpmhm9y5QjdtKvFRunaggRUaw5C\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weiRaised\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokensSold\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"msgSender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"decimals\",\"type\":\"uint256\"}],\"name\":\"calculateTokenAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"totalTokensSold\",\"type\":\"uint256\"}],\"name\":\"currentUnitPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"unitPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"feedPrice\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isPricingStrategy\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isSane\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"calculateTokenAmount(uint256,uint256,uint256,address,uint256)\":{\"params\":{\"decimals\":\"- how many decimal units the token has\",\"msgSender\":\"- who is the investor of this transaction\",\"tokensSold\":\"- how much tokens have been sold this far\",\"value\":\"- What is the value of the transaction send in as wei\",\"weiRaised\":\"- how much money has been raised this far in the main token sale - this number excludes presale\"},\"returns\":{\"tokenAmount\":\"- Amount of tokens the investor receives\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"calculateTokenAmount(uint256,uint256,uint256,address,uint256)\":{\"notice\":\"When somebody tries to buy tokens for X eth, calculate how many tokens they get.\"},\"isPricingStrategy()\":{\"notice\":\"Interface declaration. \"},\"isSane()\":{\"notice\":\"Self check if all references are correctly set. Checks that pricing strategy matches crowdsale parameters.\"}},\"notice\":\"Interface for defining crowdsale pricing.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/IPricingStrategy.sol\":\"IPricingStrategy\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eule/Projects/ico-contracts/ethereum/ico/contracts/IPricingStrategy.sol\":{\"keccak256\":\"0x789cb6c8395f173c60c380a44cd8f81e0e8b786cf0abde9bd12ba60ac301c3f8\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://a7b98a170c5695712f6d975c9bdbfc504ba3adfb3919f7625885e4207f9af244\",\"dweb:/ipfs/QmPUg15A3Hb7Wd4x6EVd5e7a5T3rwDrPLNdb6hbXzzjbto\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -89,26 +99,26 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.6;\n\n/**\n * Interface for defining crowdsale pricing.\n */\ninterface IPricingStrategy {\n\n  /** Interface declaration. */\n  function isPricingStrategy() external view returns (bool);\n\n  /** Self check if all references are correctly set.\n   *\n   * Checks that pricing strategy matches crowdsale parameters.\n   */\n  function isSane() external view returns (bool);\n\n  function currentUnitPrice(uint256 totalTokensSold) external view returns (uint unitPrice, uint feedPrice);\n\n  /**\n   * When somebody tries to buy tokens for X eth, calculate how many tokens they get.\n   *\n   *\n   * @param value - What is the value of the transaction send in as wei\n   * @param tokensSold - how much tokens have been sold this far\n   * @param decimals - how many decimal units the token has\n   * @return tokenAmount - Amount of tokens the investor receives\n   */\n  function calculateTokenAmount(uint value, uint tokensSold, uint decimals) external view returns (uint tokenAmount);\n}\n",
+  "source": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.0;\n\n/**\n * Interface for defining crowdsale pricing.\n */\ninterface IPricingStrategy {\n\n  /** Interface declaration. */\n  function isPricingStrategy() external view returns (bool);\n\n  /** Self check if all references are correctly set.\n   *\n   * Checks that pricing strategy matches crowdsale parameters.\n   */\n  function isSane() external view returns (bool);\n\n  function currentUnitPrice(uint256 totalTokensSold) external view returns (uint unitPrice, uint feedPrice);\n\n  /**\n   * When somebody tries to buy tokens for X eth, calculate how many tokens they get.\n   *\n   *\n   * @param value - What is the value of the transaction send in as wei\n   * @param tokensSold - how much tokens have been sold this far\n   * @param weiRaised - how much money has been raised this far in the main token sale - this number excludes presale\n   * @param msgSender - who is the investor of this transaction\n   * @param decimals - how many decimal units the token has\n   * @return tokenAmount - Amount of tokens the investor receives\n   */\n  function calculateTokenAmount(uint value, uint weiRaised, uint tokensSold, address msgSender, uint decimals) external view returns (uint tokenAmount);\n}\n",
   "sourcePath": "/home/eule/Projects/ico-contracts/ethereum/ico/contracts/IPricingStrategy.sol",
   "ast": {
     "absolutePath": "/home/eule/Projects/ico-contracts/ethereum/ico/contracts/IPricingStrategy.sol",
     "exportedSymbols": {
       "IPricingStrategy": [
-        1193
+        1190
       ]
     },
-    "id": 1194,
+    "id": 1191,
     "license": "UNLICENSED",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1158,
+        "id": 1151,
         "literals": [
           "solidity",
           "^",
           "0.8",
-          ".6"
+          ".0"
         ],
         "nodeType": "PragmaDirective",
         "src": "39:23:6"
@@ -119,15 +129,15 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 1159,
+          "id": 1152,
           "nodeType": "StructuredDocumentation",
           "src": "64:52:6",
           "text": " Interface for defining crowdsale pricing."
         },
         "fullyImplemented": false,
-        "id": 1193,
+        "id": 1190,
         "linearizedBaseContracts": [
-          1193
+          1190
         ],
         "name": "IPricingStrategy",
         "nameLocation": "127:16:6",
@@ -135,13 +145,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 1160,
+              "id": 1153,
               "nodeType": "StructuredDocumentation",
               "src": "149:29:6",
               "text": "Interface declaration. "
             },
             "functionSelector": "04bbc255",
-            "id": 1165,
+            "id": 1158,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -149,23 +159,23 @@
             "nameLocation": "190:17:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1161,
+              "id": 1154,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "207:2:6"
             },
             "returnParameters": {
-              "id": 1164,
+              "id": 1157,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1163,
+                  "id": 1156,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1165,
+                  "scope": 1158,
                   "src": "233:4:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -174,7 +184,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1162,
+                    "id": 1155,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "233:4:6",
@@ -188,7 +198,7 @@
               ],
               "src": "232:6:6"
             },
-            "scope": 1193,
+            "scope": 1190,
             "src": "181:58:6",
             "stateMutability": "view",
             "virtual": false,
@@ -196,13 +206,13 @@
           },
           {
             "documentation": {
-              "id": 1166,
+              "id": 1159,
               "nodeType": "StructuredDocumentation",
               "src": "243:126:6",
               "text": "Self check if all references are correctly set.\n Checks that pricing strategy matches crowdsale parameters."
             },
             "functionSelector": "82771c8e",
-            "id": 1171,
+            "id": 1164,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -210,23 +220,23 @@
             "nameLocation": "381:6:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1167,
+              "id": 1160,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "387:2:6"
             },
             "returnParameters": {
-              "id": 1170,
+              "id": 1163,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1169,
+                  "id": 1162,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1171,
+                  "scope": 1164,
                   "src": "413:4:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -235,7 +245,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1168,
+                    "id": 1161,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "413:4:6",
@@ -249,7 +259,7 @@
               ],
               "src": "412:6:6"
             },
-            "scope": 1193,
+            "scope": 1190,
             "src": "372:47:6",
             "stateMutability": "view",
             "virtual": false,
@@ -257,7 +267,7 @@
           },
           {
             "functionSelector": "d3f5c15f",
-            "id": 1180,
+            "id": 1173,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -265,17 +275,17 @@
             "nameLocation": "432:16:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1174,
+              "id": 1167,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1173,
+                  "id": 1166,
                   "mutability": "mutable",
                   "name": "totalTokensSold",
                   "nameLocation": "457:15:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1180,
+                  "scope": 1173,
                   "src": "449:23:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -284,7 +294,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1172,
+                    "id": 1165,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "449:7:6",
@@ -299,17 +309,17 @@
               "src": "448:25:6"
             },
             "returnParameters": {
-              "id": 1179,
+              "id": 1172,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1176,
+                  "id": 1169,
                   "mutability": "mutable",
                   "name": "unitPrice",
                   "nameLocation": "502:9:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1180,
+                  "scope": 1173,
                   "src": "497:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -318,7 +328,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1175,
+                    "id": 1168,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "497:4:6",
@@ -331,12 +341,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1178,
+                  "id": 1171,
                   "mutability": "mutable",
                   "name": "feedPrice",
                   "nameLocation": "518:9:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1180,
+                  "scope": 1173,
                   "src": "513:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -345,7 +355,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1177,
+                    "id": 1170,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "513:4:6",
@@ -359,7 +369,7 @@
               ],
               "src": "496:32:6"
             },
-            "scope": 1193,
+            "scope": 1190,
             "src": "423:106:6",
             "stateMutability": "view",
             "virtual": false,
@@ -367,86 +377,175 @@
           },
           {
             "documentation": {
-              "id": 1181,
+              "id": 1174,
               "nodeType": "StructuredDocumentation",
-              "src": "533:368:6",
-              "text": " When somebody tries to buy tokens for X eth, calculate how many tokens they get.\n @param value - What is the value of the transaction send in as wei\n @param tokensSold - how much tokens have been sold this far\n @param decimals - how many decimal units the token has\n @return tokenAmount - Amount of tokens the investor receives"
+              "src": "533:550:6",
+              "text": " When somebody tries to buy tokens for X eth, calculate how many tokens they get.\n @param value - What is the value of the transaction send in as wei\n @param tokensSold - how much tokens have been sold this far\n @param weiRaised - how much money has been raised this far in the main token sale - this number excludes presale\n @param msgSender - who is the investor of this transaction\n @param decimals - how many decimal units the token has\n @return tokenAmount - Amount of tokens the investor receives"
             },
-            "functionSelector": "a7c4abdb",
-            "id": 1192,
+            "functionSelector": "38c3a565",
+            "id": 1189,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculateTokenAmount",
-            "nameLocation": "913:20:6",
+            "nameLocation": "1095:20:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
+              "id": 1185,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1176,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "1121:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1116:10:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1175,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1116:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1178,
+                  "mutability": "mutable",
+                  "name": "weiRaised",
+                  "nameLocation": "1133:9:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1128:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1177,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1128:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1180,
+                  "mutability": "mutable",
+                  "name": "tokensSold",
+                  "nameLocation": "1149:10:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1144:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1179,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1144:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1182,
+                  "mutability": "mutable",
+                  "name": "msgSender",
+                  "nameLocation": "1169:9:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1161:17:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1181,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1161:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1184,
+                  "mutability": "mutable",
+                  "name": "decimals",
+                  "nameLocation": "1185:8:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1180:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1183,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1180:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1115:79:6"
+            },
+            "returnParameters": {
               "id": 1188,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1183,
-                  "mutability": "mutable",
-                  "name": "value",
-                  "nameLocation": "939:5:6",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "934:10:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1182,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "934:4:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1185,
-                  "mutability": "mutable",
-                  "name": "tokensSold",
-                  "nameLocation": "951:10:6",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "946:15:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1184,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "946:4:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
                   "id": 1187,
                   "mutability": "mutable",
-                  "name": "decimals",
-                  "nameLocation": "968:8:6",
+                  "name": "tokenAmount",
+                  "nameLocation": "1223:11:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "963:13:6",
+                  "scope": 1189,
+                  "src": "1218:16:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -457,7 +556,7 @@
                     "id": 1186,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "963:4:6",
+                    "src": "1218:4:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -466,74 +565,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "933:44:6"
+              "src": "1217:18:6"
             },
-            "returnParameters": {
-              "id": 1191,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1190,
-                  "mutability": "mutable",
-                  "name": "tokenAmount",
-                  "nameLocation": "1006:11:6",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "1001:16:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1189,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1001:4:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1000:18:6"
-            },
-            "scope": 1193,
-            "src": "904:115:6",
+            "scope": 1190,
+            "src": "1086:150:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1194,
-        "src": "117:904:6",
+        "scope": 1191,
+        "src": "117:1121:6",
         "usedErrors": []
       }
     ],
-    "src": "39:983:6"
+    "src": "39:1200:6"
   },
   "legacyAST": {
     "absolutePath": "/home/eule/Projects/ico-contracts/ethereum/ico/contracts/IPricingStrategy.sol",
     "exportedSymbols": {
       "IPricingStrategy": [
-        1193
+        1190
       ]
     },
-    "id": 1194,
+    "id": 1191,
     "license": "UNLICENSED",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1158,
+        "id": 1151,
         "literals": [
           "solidity",
           "^",
           "0.8",
-          ".6"
+          ".0"
         ],
         "nodeType": "PragmaDirective",
         "src": "39:23:6"
@@ -544,15 +609,15 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 1159,
+          "id": 1152,
           "nodeType": "StructuredDocumentation",
           "src": "64:52:6",
           "text": " Interface for defining crowdsale pricing."
         },
         "fullyImplemented": false,
-        "id": 1193,
+        "id": 1190,
         "linearizedBaseContracts": [
-          1193
+          1190
         ],
         "name": "IPricingStrategy",
         "nameLocation": "127:16:6",
@@ -560,13 +625,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 1160,
+              "id": 1153,
               "nodeType": "StructuredDocumentation",
               "src": "149:29:6",
               "text": "Interface declaration. "
             },
             "functionSelector": "04bbc255",
-            "id": 1165,
+            "id": 1158,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -574,23 +639,23 @@
             "nameLocation": "190:17:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1161,
+              "id": 1154,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "207:2:6"
             },
             "returnParameters": {
-              "id": 1164,
+              "id": 1157,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1163,
+                  "id": 1156,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1165,
+                  "scope": 1158,
                   "src": "233:4:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -599,7 +664,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1162,
+                    "id": 1155,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "233:4:6",
@@ -613,7 +678,7 @@
               ],
               "src": "232:6:6"
             },
-            "scope": 1193,
+            "scope": 1190,
             "src": "181:58:6",
             "stateMutability": "view",
             "virtual": false,
@@ -621,13 +686,13 @@
           },
           {
             "documentation": {
-              "id": 1166,
+              "id": 1159,
               "nodeType": "StructuredDocumentation",
               "src": "243:126:6",
               "text": "Self check if all references are correctly set.\n Checks that pricing strategy matches crowdsale parameters."
             },
             "functionSelector": "82771c8e",
-            "id": 1171,
+            "id": 1164,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -635,23 +700,23 @@
             "nameLocation": "381:6:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1167,
+              "id": 1160,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "387:2:6"
             },
             "returnParameters": {
-              "id": 1170,
+              "id": 1163,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1169,
+                  "id": 1162,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1171,
+                  "scope": 1164,
                   "src": "413:4:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -660,7 +725,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 1168,
+                    "id": 1161,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "413:4:6",
@@ -674,7 +739,7 @@
               ],
               "src": "412:6:6"
             },
-            "scope": 1193,
+            "scope": 1190,
             "src": "372:47:6",
             "stateMutability": "view",
             "virtual": false,
@@ -682,7 +747,7 @@
           },
           {
             "functionSelector": "d3f5c15f",
-            "id": 1180,
+            "id": 1173,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -690,17 +755,17 @@
             "nameLocation": "432:16:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1174,
+              "id": 1167,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1173,
+                  "id": 1166,
                   "mutability": "mutable",
                   "name": "totalTokensSold",
                   "nameLocation": "457:15:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1180,
+                  "scope": 1173,
                   "src": "449:23:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -709,7 +774,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1172,
+                    "id": 1165,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "449:7:6",
@@ -724,17 +789,17 @@
               "src": "448:25:6"
             },
             "returnParameters": {
-              "id": 1179,
+              "id": 1172,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1176,
+                  "id": 1169,
                   "mutability": "mutable",
                   "name": "unitPrice",
                   "nameLocation": "502:9:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1180,
+                  "scope": 1173,
                   "src": "497:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -743,7 +808,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1175,
+                    "id": 1168,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "497:4:6",
@@ -756,12 +821,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1178,
+                  "id": 1171,
                   "mutability": "mutable",
                   "name": "feedPrice",
                   "nameLocation": "518:9:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1180,
+                  "scope": 1173,
                   "src": "513:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -770,7 +835,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1177,
+                    "id": 1170,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "513:4:6",
@@ -784,7 +849,7 @@
               ],
               "src": "496:32:6"
             },
-            "scope": 1193,
+            "scope": 1190,
             "src": "423:106:6",
             "stateMutability": "view",
             "virtual": false,
@@ -792,86 +857,175 @@
           },
           {
             "documentation": {
-              "id": 1181,
+              "id": 1174,
               "nodeType": "StructuredDocumentation",
-              "src": "533:368:6",
-              "text": " When somebody tries to buy tokens for X eth, calculate how many tokens they get.\n @param value - What is the value of the transaction send in as wei\n @param tokensSold - how much tokens have been sold this far\n @param decimals - how many decimal units the token has\n @return tokenAmount - Amount of tokens the investor receives"
+              "src": "533:550:6",
+              "text": " When somebody tries to buy tokens for X eth, calculate how many tokens they get.\n @param value - What is the value of the transaction send in as wei\n @param tokensSold - how much tokens have been sold this far\n @param weiRaised - how much money has been raised this far in the main token sale - this number excludes presale\n @param msgSender - who is the investor of this transaction\n @param decimals - how many decimal units the token has\n @return tokenAmount - Amount of tokens the investor receives"
             },
-            "functionSelector": "a7c4abdb",
-            "id": 1192,
+            "functionSelector": "38c3a565",
+            "id": 1189,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculateTokenAmount",
-            "nameLocation": "913:20:6",
+            "nameLocation": "1095:20:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
+              "id": 1185,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1176,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "1121:5:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1116:10:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1175,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1116:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1178,
+                  "mutability": "mutable",
+                  "name": "weiRaised",
+                  "nameLocation": "1133:9:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1128:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1177,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1128:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1180,
+                  "mutability": "mutable",
+                  "name": "tokensSold",
+                  "nameLocation": "1149:10:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1144:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1179,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1144:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1182,
+                  "mutability": "mutable",
+                  "name": "msgSender",
+                  "nameLocation": "1169:9:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1161:17:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1181,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1161:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1184,
+                  "mutability": "mutable",
+                  "name": "decimals",
+                  "nameLocation": "1185:8:6",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1189,
+                  "src": "1180:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1183,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1180:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1115:79:6"
+            },
+            "returnParameters": {
               "id": 1188,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1183,
-                  "mutability": "mutable",
-                  "name": "value",
-                  "nameLocation": "939:5:6",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "934:10:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1182,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "934:4:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1185,
-                  "mutability": "mutable",
-                  "name": "tokensSold",
-                  "nameLocation": "951:10:6",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "946:15:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1184,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "946:4:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
                   "id": 1187,
                   "mutability": "mutable",
-                  "name": "decimals",
-                  "nameLocation": "968:8:6",
+                  "name": "tokenAmount",
+                  "nameLocation": "1223:11:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "963:13:6",
+                  "scope": 1189,
+                  "src": "1218:16:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -882,7 +1036,7 @@
                     "id": 1186,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "963:4:6",
+                    "src": "1218:4:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -891,55 +1045,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "933:44:6"
+              "src": "1217:18:6"
             },
-            "returnParameters": {
-              "id": 1191,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 1190,
-                  "mutability": "mutable",
-                  "name": "tokenAmount",
-                  "nameLocation": "1006:11:6",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1192,
-                  "src": "1001:16:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 1189,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1001:4:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1000:18:6"
-            },
-            "scope": 1193,
-            "src": "904:115:6",
+            "scope": 1190,
+            "src": "1086:150:6",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1194,
-        "src": "117:904:6",
+        "scope": 1191,
+        "src": "117:1121:6",
         "usedErrors": []
       }
     ],
-    "src": "39:983:6"
+    "src": "39:1200:6"
   },
   "compiler": {
     "name": "solc",
@@ -947,15 +1067,17 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-08-16T13:27:28.603Z",
+  "updatedAt": "2021-10-11T21:55:08.405Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
-      "calculateTokenAmount(uint256,uint256,uint256)": {
+      "calculateTokenAmount(uint256,uint256,uint256,address,uint256)": {
         "params": {
           "decimals": "- how many decimal units the token has",
+          "msgSender": "- who is the investor of this transaction",
           "tokensSold": "- how much tokens have been sold this far",
-          "value": "- What is the value of the transaction send in as wei"
+          "value": "- What is the value of the transaction send in as wei",
+          "weiRaised": "- how much money has been raised this far in the main token sale - this number excludes presale"
         },
         "returns": {
           "tokenAmount": "- Amount of tokens the investor receives"
@@ -967,7 +1089,7 @@
   "userdoc": {
     "kind": "user",
     "methods": {
-      "calculateTokenAmount(uint256,uint256,uint256)": {
+      "calculateTokenAmount(uint256,uint256,uint256,address,uint256)": {
         "notice": "When somebody tries to buy tokens for X eth, calculate how many tokens they get."
       },
       "isPricingStrategy()": {

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.6;
+pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
@@ -8,6 +8,7 @@ import "./TimeLockedWalletFactory.sol";
 import "./CollectCoin.sol";
 import "./Haltable.sol";
 import "./IPricingStrategy.sol";
+import "./IFinalizeAgent.sol";
 
 contract CollectCoinIco is Haltable, ICollectCoinIco  {
 
@@ -335,7 +336,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     * @return Number of tokens that can be purchased with the specified _weiAmount
     */
     function _getTokenAmount(uint256 _weiAmount) internal view returns (uint256) {
-        uint256 tokenAmount = pricingStrategy.calculateTokenAmount(_weiAmount, tokensSold, token.decimals());
+        uint256 tokenAmount = pricingStrategy.calculateTokenAmount(_weiAmount, weiRaised, tokensSold, address(0), token.decimals());
         return tokenAmount;
     }
 }

@@ -21,19 +21,16 @@ let deployIco = (deployer, network, accounts, icoArtifact, pricingStrategy) => {
     
     if(deployer.network == "development") 
     {
-        maxTokenCount =  web3.utils.toWei("1450000", "ether"); // 500K token
-        minFund = web3.utils.toWei("500000", "ether"); // 500k CLCT = 50k USD
-        investorTokenCap = web3.utils.toWei("250000", "ether");
+        maxTokenCount =  web3.utils.toWei("2900000", "ether"); // 14.5M token * $0.10 = $200k;
+
+        minFund = web3.utils.toWei("1300000", "ether"); // 1.3M CLCT = 77K USD
+        investorTokenCap = web3.utils.toWei("20000", "ether");
         tokenOwner = accounts[0];
 
-        startsAt = Math.round(new Date().getTime() / 1000)
-        endsAt = new Date();
-        //endsAt.setDate(endsAt.getDate() + 7);
-        //endsAt.setHours(endsAt.getHours() + 1);
-        endsAt.setMinutes(endsAt.getMinutes() + 3);
-        endsAt = Math.round(endsAt / 1000);
+        startsAt = 1632146400; 
+        endsAt = 1633960800;
 
-        walletUnlockPeriod = 90; // seconds
+        walletUnlockPeriod = 2592000; // seconds
         walletUnlockPercentage = 25;
         
         // https://wallet.gnosis.pm/#/wallets with Ganache wallet connected
@@ -62,14 +59,24 @@ let deployIco = (deployer, network, accounts, icoArtifact, pricingStrategy) => {
     }
     else if(deployer.network == "bscmainnet")
     {
-        coinAddress = "";
-        maxTokenCount =  web3.utils.toWei("14500000", "ether"); // 14.5M token * $0.10 = $200k;
-
-        // https://gnosis-safe.binance.org/#/safes/0xE47DDC0624c5aa2391e1826638A886DBcF824cE5
-        //multisig_wallet = "0xE47DDC0624c5aa2391e1826638A886DBcF824cE5"; 
+        coinAddress = "0x6b81ed499bfe7f4cb79c381892e5ce69c3c9a9df";
 
         // https://bsc.gnosis-safe.io/app/#/safes/0x7c68fC19dE700Af3b4cC9be2ad07A660AC707eff/balances
         multisig_wallet = "0x7c68fC19dE700Af3b4cC9be2ad07A660AC707eff"; 
+
+        maxTokenCount =  web3.utils.toWei("20000000", "ether"); // 20M CLCT
+
+        minFund = web3.utils.toWei("1300000", "ether"); // 2M CLCT
+        investorTokenCap = web3.utils.toWei("30000", "ether");
+        tokenOwner = multisig_wallet;
+
+        startsAt = 1634565600; 
+        endsAt = 1636981200;
+
+        walletUnlockPeriod = 2592000; // seconds
+        walletUnlockPercentage = 25;
+
+        
     }
 
     return (coinAddress ? CollectCoin.at(coinAddress) : CollectCoin.deployed()).then(coin => {
