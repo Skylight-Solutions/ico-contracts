@@ -8,7 +8,6 @@ import "./TimeLockedWalletFactory.sol";
 import "./CollectCoin.sol";
 import "./Haltable.sol";
 import "./IPricingStrategy.sol";
-import "./IFinalizeAgent.sol";
 
 contract CollectCoinIco is Haltable, ICollectCoinIco  {
 

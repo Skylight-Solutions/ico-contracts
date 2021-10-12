@@ -6,10 +6,21 @@ import "./PeriodicTimeLockedMonoWallet.sol";
 
 contract TimeLockedWalletFactory {
  
+    address public owner;
     mapping(address => address[]) wallets;
 
     event Created(address wallet, address from, address to, uint256 createdAt);
     event CreatedMono(address wallet, address from, address to, uint256 createdAt);
+
+    modifier onlyOwner {
+        require(msg.sender == owner, "Only Owner");
+        _;
+    }
+
+    constructor()
+    {
+        owner = msg.sender;
+    }
 
     function getWallets(address _user) 
         public
@@ -20,7 +31,7 @@ contract TimeLockedWalletFactory {
     }
 
     function newPeriodicTimeLockedWallet(address _owner, uint256 _lockDate, uint256 _unlockPeriod, uint _unlockPercentage)
-        public
+        public onlyOwner
         returns(address wallet)
     {
         // Create new wallet.
