@@ -19,6 +19,8 @@
     "@chainlink/contracts": "^0.1.7",
     "@openzeppelin/contracts": "^4.1.0",
     "@truffle/hdwallet-provider": "^1.2.3",
-    "ethereum-input-data-decoder": "^0.3.2"
+    "ethereum-input-data-decoder": "^0.3.2",
+    "moment": "^2.29.1",
+    "truffle-assertions": "^0.9.2"
   }
 }

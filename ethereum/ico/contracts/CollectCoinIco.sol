@@ -336,7 +336,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     * @return Number of tokens that can be purchased with the specified _weiAmount
     */
     function _getTokenAmount(uint256 _weiAmount) internal view returns (uint256) {
-        uint256 tokenAmount = pricingStrategy.calculateTokenAmount(_weiAmount, weiRaised, tokensSold, address(0), token.decimals());
+        uint256 tokenAmount = pricingStrategy.calculateTokenAmount(_weiAmount, tokensSold, token.decimals());
         return tokenAmount;
     }
 }

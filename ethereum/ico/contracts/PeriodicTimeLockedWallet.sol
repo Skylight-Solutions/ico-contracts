@@ -15,7 +15,7 @@ contract PeriodicTimeLockedWallet
     address tokenOwner;
 
     modifier onlyOwner {
-        require(msg.sender == owner);
+        require(msg.sender == owner, "Only Owner");
         _;
     }
 
@@ -69,7 +69,7 @@ contract PeriodicTimeLockedWallet
         uint256 claimedAmount = claimedAmountOf[tokenAddress];
 
         ERC20 token = ERC20(tokenAddress);
-        uint256 totaltokenAmount = token.balanceOf(owner) + claimedAmount;
+        uint256 totaltokenAmount = token.balanceOf(address(this)) + claimedAmount;
 
         uint256 timeDiff = block.timestamp - lockDate;
 
