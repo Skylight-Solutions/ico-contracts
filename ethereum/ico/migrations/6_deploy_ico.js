@@ -5,6 +5,7 @@ var CollectCoinIcoMock = artifacts.require("CollectCoinIcoMock");
 var MilestonePricingStrategy = artifacts.require("MilestonePricingStrategy");
 var DefaultFinalizeAgent = artifacts.require("DefaultFinalizeAgent");
 var TimeLockedWalletFactory = artifacts.require("TimeLockedWalletFactory");
+const moment = require("moment")
 
 let maxTokenCount;
 
@@ -18,19 +19,29 @@ let deployIco = (deployer, network, accounts, icoArtifact, pricingStrategy) => {
     let investorTokenCap;
     let tokenOwner;
     let walletUnlockPeriod, walletUnlockPercentage;
+
+    // named durations
+    const thirtyDays = moment.duration(30, 'days');
+    const threeMinutes = moment.duration(3, 'minutes');
+
+    // named dates
+    const today = moment().utc();
+ 
+     
+     const thirtyDaysFrom = (utcDateTime) => utcDateTime == 0 ? 0 : utcDateTime.add(thirtyDays);
     
     if(deployer.network == "development") 
     {
-        maxTokenCount =  web3.utils.toWei("2900000", "ether"); // 14.5M token * $0.10 = $200k;
+        maxTokenCount =  web3.utils.toWei("20000000", "ether");
 
-        minFund = web3.utils.toWei("1300000", "ether"); // 1.3M CLCT = 77K USD
-        investorTokenCap = web3.utils.toWei("20000", "ether");
+        minFund = web3.utils.toWei("1300000", "ether"); 
+        investorTokenCap = web3.utils.toWei("30000", "ether");
         tokenOwner = accounts[0];
 
-        startsAt = 1632146400; 
-        endsAt = 1633960800;
+        startsAt = today.unix(); 
+        endsAt = thirtyDaysFrom(today).unix();
 
-        walletUnlockPeriod = 2592000; // seconds
+        walletUnlockPeriod = threeMinutes.asSeconds();
         walletUnlockPercentage = 25;
         
         // https://wallet.gnosis.pm/#/wallets with Ganache wallet connected
@@ -42,16 +53,16 @@ let deployIco = (deployer, network, accounts, icoArtifact, pricingStrategy) => {
         multisig_wallet = "0x8a3ed38E6a477a094c4D1D8C141Aafa078D3aA7D"; 
 
         coinAddress = "0x456819bb38b8491834ef506d7776ed34ae7121da";
-        maxTokenCount =  web3.utils.toWei("1450", "ether"); // 2M token * $0.10 = $200k;
+        maxTokenCount =  web3.utils.toWei("1450", "ether");
 
-        minFund = web3.utils.toWei("500", "ether"); // 500k CLCT = 50k USD
-        investorTokenCap = web3.utils.toWei("500", "ether");
+        minFund = web3.utils.toWei("250", "ether");
+        investorTokenCap = web3.utils.toWei("1450", "ether");
         tokenOwner = multisig_wallet;
 
         startsAt = Math.round(new Date().getTime() / 1000)
         endsAt = new Date();
-        endsAt.setDate(endsAt.getDate() + 7);
-        //endsAt.setHours(endsAt.getHours() + 1);
+        //endsAt.setDate(endsAt.getDate() + 7);
+        endsAt.setHours(endsAt.getMinutes() + 10);
         endsAt = Math.round(endsAt / 1000);
 
         walletUnlockPeriod = 300; // seconds
@@ -75,8 +86,6 @@ let deployIco = (deployer, network, accounts, icoArtifact, pricingStrategy) => {
 
         walletUnlockPeriod = 2592000; // seconds
         walletUnlockPercentage = 25;
-
-        
     }
 
     return (coinAddress ? CollectCoin.at(coinAddress) : CollectCoin.deployed()).then(coin => {

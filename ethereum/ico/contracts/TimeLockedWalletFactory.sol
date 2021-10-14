@@ -30,13 +30,30 @@ contract TimeLockedWalletFactory {
         return wallets[_user];
     }
 
-    function newPeriodicTimeLockedWallet(address _owner, uint256 _lockDate, uint256 _unlockPeriod, uint _unlockPercentage)
+    /**
+    * Initializes a time locked wallet that has been created by this factory.
+    *
+    * The owner of the factory can trigger a call on a wallet that is uninitialized and has been created by this factory.
+    * @param _wallet The unitialized TimeLockedWallet contract.
+    * @param _unlockDate The unlock date that is set to the wallet.
+    */
+    function initializeTimeLockedWallet(address payable _wallet, uint256 _unlockDate) public onlyOwner {
+        PeriodicTimeLockedWallet wallet = PeriodicTimeLockedWallet(_wallet);
+
+        wallet.initialize(_unlockDate);
+    }
+
+    function newPeriodicTimeLockedWallet(address _owner, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage)
         public onlyOwner
         returns(address wallet)
     {
         // Create new wallet.
-        PeriodicTimeLockedWallet tlwallet = new PeriodicTimeLockedWallet(_owner, _lockDate, _unlockPeriod, _unlockPercentage);
+        PeriodicTimeLockedWallet tlwallet = new PeriodicTimeLockedWallet(_owner, _unlockPeriod, _unlockPercentage);
         
+        if(_unlockDate > 0) {
+            tlwallet.initialize(_unlockDate);
+        }
+
         wallet = address(tlwallet);
 
         // Add wallet to owner's wallets.
@@ -46,14 +63,14 @@ contract TimeLockedWalletFactory {
         emit Created(wallet, msg.sender, _owner, block.timestamp);
     }
 
-    function newPeriodicTimeLockedMonoWallet(address _tokenOwner, address _icoContract, uint256 _lockDate, uint256 _unlockPeriod, uint _unlockPercentage)
+    function newPeriodicTimeLockedMonoWallet(address _tokenOwner, address _icoContract, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage)
         public
         returns(address wallet)
     {
         ICollectCoinIco ico = ICollectCoinIco(_icoContract);
 
         // Create new wallet.
-        PeriodicTimeLockedMonoWallet tlwallet = new PeriodicTimeLockedMonoWallet(msg.sender, ico, _lockDate, _unlockPeriod, _unlockPercentage, _tokenOwner);
+        PeriodicTimeLockedMonoWallet tlwallet = new PeriodicTimeLockedMonoWallet(msg.sender, ico, _unlockDate, _unlockPeriod, _unlockPercentage, _tokenOwner);
         
         wallet = address(tlwallet);
 

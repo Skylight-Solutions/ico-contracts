@@ -11,7 +11,8 @@ module.exports = function(deployer, network, accounts)
     else if(network == "bsctestnet")
     {
         // https://wallet.gnosis.pm/#/wallets
-        receiver = "0x8a3ed38E6a477a094c4D1D8C141Aafa078D3aA7D"; 
+        //receiver = "0x8a3ed38E6a477a094c4D1D8C141Aafa078D3aA7D"; 
+        receiver = "0xeeFf67f18F8fC328d7c06f02EC8Bb01E65D15c77"; 
     }
     else if(network == "bscmainnet")
     {

@@ -6,10 +6,12 @@ exports.Helper = {
 }
 
 exports.Constants = {
+    InvestorCap: 500000,
+    SoftCap: 6000000,
     Milestones: [
         { expectedTokenCount: 0, expectedPrice: 0.05 },
-        { expectedTokenCount: 500000, expectedPrice: 0.06 },
-        { expectedTokenCount: 1000000, expectedPrice: 0.065 },
-        { expectedTokenCount: 1500000, expectedPrice: 0.08 },
+        { expectedTokenCount: 5000000, expectedPrice: 0.06 },
+        { expectedTokenCount: 10000000, expectedPrice: 0.065 },
+        { expectedTokenCount: 15000000, expectedPrice: 0.08 },
     ]
 }

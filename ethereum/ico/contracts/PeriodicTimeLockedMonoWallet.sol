@@ -9,7 +9,7 @@ import "./ICollectCoinIco.sol";
 contract PeriodicTimeLockedMonoWallet
 {
     address public creator;
-    uint256 public lockDate;
+    uint256 public unlockDate;
     uint256 public createdAt;
 
     uint256 public unlockPeriod;
@@ -22,12 +22,12 @@ contract PeriodicTimeLockedMonoWallet
 
     event WithdrewTokens(address tokenContract, address to, uint256 amount);
 
-    constructor(address _creator, ICollectCoinIco _icoContract, uint256 _lockDate, uint256 _unlockPeriod, uint _unlockPercentage, address _tokenOwner)
+    constructor(address _creator, ICollectCoinIco _icoContract, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage, address _tokenOwner)
     {
         creator = _creator;
         icoContract = _icoContract;
 
-        lockDate = _lockDate;
+        unlockDate = _unlockDate;
         createdAt = block.timestamp;
         tokenOwner = _tokenOwner;
 
@@ -73,9 +73,16 @@ contract PeriodicTimeLockedMonoWallet
         // the amount of tokens already unlocked and transferred
         uint256 claimedAmount = claimedAmountOf[msg.sender];
 
-        uint256 timeDiff = block.timestamp - lockDate;
+        int256 timeDiff = int256(block.timestamp) - int256(unlockDate);
 
-        uint unlockedUnits = (timeDiff / unlockPeriod) + 1;
+        if(timeDiff < 0) 
+        {
+            // still locked
+            return 0;
+        }
+
+        uint unlockedUnits = (uint256(timeDiff) / unlockPeriod) + 1;
+
         uint multiplier = unlockedUnits * unlockPercentage >= 100 ? 100 : unlockedUnits * unlockPercentage;
 
         return (multiplier * totaltokenAmount) / 100 - claimedAmount;

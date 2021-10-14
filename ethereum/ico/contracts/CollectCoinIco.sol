@@ -149,7 +149,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     *
     * @return tokensBought How mony tokens were bought
     */
-    function buyTokens(address receiver, uint128 customerId, uint256 tokenAmount) stopInEmergency internal returns(uint tokensBought) 
+    function buyTokens(address receiver, uint128 customerId, uint256 tokenAmount) stopInEmergency inState(State.Funding) internal returns(uint tokensBought) 
     {
         require(getState() == State.Funding || getState() == State.Success, "Contract not in Funding or Success state.");
 

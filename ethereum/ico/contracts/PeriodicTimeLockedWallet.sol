@@ -6,8 +6,10 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract PeriodicTimeLockedWallet
 {
+    bool public initialized;
     address public owner;
-    uint256 public lockDate;
+    address public creator;
+    uint256 public unlockDate;
     uint256 public createdAt;
 
     uint256 public unlockPeriod;
@@ -19,15 +21,21 @@ contract PeriodicTimeLockedWallet
         _;
     }
 
+    modifier onlyCreator {
+        require(msg.sender == creator, "Only Creator");
+        _;
+    }
+
     mapping (address => uint256) private claimedAmountOf;
 
     event WithdrewTokens(address tokenContract, address to, uint256 amount);
 
-    constructor(address _owner, uint256 _lockDate, uint256 _unlockPeriod, uint _unlockPercentage)
+    constructor(address _owner, uint256 _unlockPeriod, uint _unlockPercentage)
     {
+        creator = msg.sender;
         owner = _owner;
 
-        lockDate = _lockDate;
+        initialized = false;
         createdAt = block.timestamp;
 
         // unlockedAmount = 0;
@@ -39,6 +47,16 @@ contract PeriodicTimeLockedWallet
     {
         // we do not accept any native coin on this wallet
         revert();
+    }
+
+    function initialize(uint256 _unlockDate) public onlyCreator 
+    {
+        if(initialized) {
+            revert("Already Initialized");
+        }
+
+        unlockDate =_unlockDate;
+        initialized = true;
     }
 
     // callable by owner only, after specified time, only for Tokens implementing ERC20
@@ -56,7 +74,7 @@ contract PeriodicTimeLockedWallet
 
     function balance(address tokenAddress) public view returns (uint256) {
         ERC20 token = ERC20(tokenAddress);
-        return token.balanceOf(owner);
+        return token.balanceOf(address(this));
     }
 
     function claimed(address tokenAddress) public view returns (uint256) {
@@ -65,15 +83,25 @@ contract PeriodicTimeLockedWallet
 
     function getUnlockedTokenAmount(address tokenAddress) public view returns (uint256)
     {
+        if(!initialized) {
+            return 0;
+        }
+
         // the amount of tokens already unlocked and transferred
         uint256 claimedAmount = claimedAmountOf[tokenAddress];
 
         ERC20 token = ERC20(tokenAddress);
         uint256 totaltokenAmount = token.balanceOf(address(this)) + claimedAmount;
 
-        uint256 timeDiff = block.timestamp - lockDate;
+        int256 timeDiff = int256(block.timestamp) - int256(unlockDate);
+        
+        if(timeDiff < 0) 
+        {
+            // still locked
+            return 0;
+        }
 
-        uint unlockedUnits = (timeDiff / unlockPeriod) + 1;
+        uint unlockedUnits = (uint256(timeDiff) / unlockPeriod) + 1;
         uint multiplier = unlockedUnits * unlockPercentage >= 100 ? 100 : unlockedUnits * unlockPercentage;
 
         return (multiplier * totaltokenAmount) / 100 - claimedAmount;
