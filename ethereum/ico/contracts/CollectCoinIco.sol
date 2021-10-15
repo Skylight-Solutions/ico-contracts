@@ -213,10 +213,10 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
 
         timeLockedWallet = walletFactory.newPeriodicTimeLockedMonoWallet(tokenOwner, address(this), walletLockDate, walletUnlockPeriod, walletUnlockPercentage);
 
+        finalized = true;
+
         // Pocket the money, or fail the transaction if we for some reason cannot send the money to our multisig
         if(!multisigWallet.send(weiRaised)) revert();
-        
-        finalized = true;
     }
 
     function setWalletFactory(TimeLockedWalletFactory addr) public override onlyOwner {
