@@ -54,7 +54,7 @@ contract PeriodicTimeLockedMonoWallet
        
        claimedAmountOf[msg.sender] += unlockedTokenAmount;
 
-       token.transferFrom(tokenOwner, msg.sender, unlockedTokenAmount);
+       if(!token.transferFrom(tokenOwner, msg.sender, unlockedTokenAmount)) revert();
        emit WithdrewTokens(_tokenContract, msg.sender, unlockedTokenAmount);
     }
 

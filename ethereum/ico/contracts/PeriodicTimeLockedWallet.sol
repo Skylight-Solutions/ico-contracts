@@ -68,7 +68,7 @@ contract PeriodicTimeLockedWallet
         claimedAmountOf[_tokenContract] += _amount;
 
         ERC20 token = ERC20(_tokenContract);
-        token.transfer(owner, _amount);
+        if(!token.transfer(owner, _amount)) revert();
         emit WithdrewTokens(_tokenContract, owner, unlockedTokenAmount);
     }
 
