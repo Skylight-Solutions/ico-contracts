@@ -1,5 +1,6 @@
 const MilestonePricingStrategy = artifacts.require("MilestonePricingStrategy");
 const TestPriceOracle = artifacts.require("TestPriceOracle");
+const IcoNumbers = require('./IcoNumbers');
 
 const assertMilestone = (soldTokenCount, expectedTokenCount, tokenPriceUsdWei, expectedPrice) => {
 
@@ -12,8 +13,8 @@ const assertMilestone = (soldTokenCount, expectedTokenCount, tokenPriceUsdWei, e
     // console.log("soldTokenCount", soldTokenCountValue);
     // console.log("tokenPriceUsd", tokenPriceUsd);
     
-    assert.equal(soldTokenCountValue, expectedTokenCount);
-    assert.equal(tokenPriceUsd, expectedPrice);
+    assert.equal(soldTokenCountValue, expectedTokenCount.toString());
+    assert.equal(tokenPriceUsd, expectedPrice.toString());
 }
 
 const assertPrice = async (usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldTokens) => {
@@ -41,7 +42,7 @@ const assertPrice = async (usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldT
     const diff = Math.abs(totalPriceBnb - expectedBnbPrice);
 
     // reverse check - get the amount of tokens for a specific amount of BNB
-    const calculatedTokenAmountWei = await mps.calculateTokenAmount(totalPriceWei, 0, web3.utils.toWei(soldTokens.toString(), "ether"), "0xf6993E9B6d311886519E7686eA92C1c1e33F2A5C" , clctDecimals) 
+    const calculatedTokenAmountWei = await mps.calculateTokenAmount(totalPriceWei, web3.utils.toWei(soldTokens.toString(), "ether"), clctDecimals) 
     const calculatedTokenAmount = web3.utils.fromWei(calculatedTokenAmountWei.toString(), "ether");
 
     if(true) {
@@ -59,45 +60,27 @@ const assertPrice = async (usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldT
 
 contract("MilestonePricingStrategy", async accounts => {
         
-    let usdbnbprice, milestones;
+    let usdbnbprice;
 
     before(async () => {
         const oracle = await TestPriceOracle.deployed();
         const oracleData = await oracle.latestRoundData();
 
         usdbnbprice = oracleData.answer;
-        milestones = [
-            { expectedTokenCount: 0, expectedPrice: 0.05 },
-            { expectedTokenCount: 500000, expectedPrice: 0.06 },
-            { expectedTokenCount: 1000000, expectedPrice: 0.065 },
-            { expectedTokenCount: 1500000, expectedPrice: 0.08 },
-        ];
     });
 
     it("should have correct milestones", async () => {
         const mps = await MilestonePricingStrategy.deployed();
         
-        milestones.forEach(async (ms, i) => {
+        IcoNumbers.Constants.Milestones.forEach(async (ms, i) => {
             let {soldTokenCount, price: tokenPriceUsdWei} = await mps.getMilestone(i);
             assertMilestone(soldTokenCount, ms.expectedTokenCount, tokenPriceUsdWei, ms.expectedPrice);
         });
-
-        // let {soldTokenCount, price: tokenPriceUsdWei} = await mps.getMilestone(0);
-        // assertMilestone(soldTokenCount, 0, tokenPriceUsdWei, 0.05);
-
-        // ({soldTokenCount, price: tokenPriceUsdWei} = await mps.getMilestone(1));
-        // assertMilestone(soldTokenCount, 500000, tokenPriceUsdWei, 0.06);
-
-        // ({soldTokenCount, price: tokenPriceUsdWei} = await mps.getMilestone(2));
-        // assertMilestone(soldTokenCount, 1000000, tokenPriceUsdWei, 0.065);
-
-        // ({soldTokenCount, price: tokenPriceUsdWei} = await mps.getMilestone(3));
-        // assertMilestone(soldTokenCount, 1500000, tokenPriceUsdWei, 0.08);
     });
 
     it("should calculate the right price for milestone 0", async () => {
         // all in first milestone
-        const expectedUnitPriceUsd = milestones[0].expectedPrice;
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[0].expectedPrice;
         const tokenAmount = 400000;
         const soldTokens = 0;
 
@@ -106,36 +89,36 @@ contract("MilestonePricingStrategy", async accounts => {
 
     it("should calculate the right price for milestone 1", async () => {
         // all in first milestone
-        const expectedUnitPriceUsd = milestones[1].expectedPrice;
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[1].expectedPrice;
         const tokenAmount = 400000;
-        const soldTokens = milestones[1].expectedTokenCount;
+        const soldTokens = IcoNumbers.Constants.Milestones[1].expectedTokenCount;
 
         await assertPrice(usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldTokens);
     });
 
     it("should calculate the right price for milestone 2", async () => {
         // all in first milestone
-        const expectedUnitPriceUsd = milestones[2].expectedPrice;
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[2].expectedPrice;
         const tokenAmount = 400000;
-        const soldTokens = milestones[2].expectedTokenCount;
+        const soldTokens = IcoNumbers.Constants.Milestones[2].expectedTokenCount;
 
         await assertPrice(usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldTokens);
     });
 
     it("should calculate the right price for milestone 3", async () => {
         // all in first milestone
-        const expectedUnitPriceUsd = milestones[3].expectedPrice;
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[3].expectedPrice;
         const tokenAmount = 400000;
-        const soldTokens = milestones[3].expectedTokenCount;
+        const soldTokens = IcoNumbers.Constants.Milestones[3].expectedTokenCount;
 
         await assertPrice(usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldTokens);
     });
 
     it("should calculate the right price beyond milestone 3", async () => {
         // all in first milestone
-        const expectedUnitPriceUsd = milestones[3].expectedPrice;
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[3].expectedPrice;
         const tokenAmount = 1000000;
-        const soldTokens = milestones[3].expectedTokenCount * 2;
+        const soldTokens = IcoNumbers.Constants.Milestones[3].expectedTokenCount * 2;
 
         await assertPrice(usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldTokens);
     });
@@ -143,12 +126,15 @@ contract("MilestonePricingStrategy", async accounts => {
     it("should calculate the right price for milestone 1+2 25/75", async () => {
         // all in first milestone
         const offsetPercentage = 0.25;
-        const tokenAmount = 400000;
+        const tokenAmount = 5000000;
         const offset = -1 * tokenAmount * offsetPercentage;
 
-        const expectedUnitPriceUsd = milestones[0].expectedPrice * offsetPercentage + milestones[1].expectedPrice * (1 - offsetPercentage);
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[0].expectedPrice 
+                                   * offsetPercentage 
+                                   + IcoNumbers.Constants.Milestones[1].expectedPrice 
+                                   * (1 - offsetPercentage);
         
-        const soldTokens = milestones[1].expectedTokenCount + offset;
+        const soldTokens = IcoNumbers.Constants.Milestones[1].expectedTokenCount + offset;
 
         await assertPrice(usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldTokens);
     });
@@ -156,23 +142,26 @@ contract("MilestonePricingStrategy", async accounts => {
     it("should calculate the right price for milestone 1+2+3 25/50/25", async () => {
         // all in first milestone
         const offsetPercentage = 0.25;
-        const tokenAmount = 1000000;
+        const tokenAmount = 10000000;
         const offset = -1 * tokenAmount * offsetPercentage;
 
-        const expectedUnitPriceUsd = milestones[1].expectedPrice * offsetPercentage + milestones[2].expectedPrice * 0.5 + milestones[3].expectedPrice * 0.25;
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[1].expectedPrice * offsetPercentage 
+                                   + IcoNumbers.Constants.Milestones[2].expectedPrice * 0.5 
+                                   + IcoNumbers.Constants.Milestones[3].expectedPrice * offsetPercentage;
         
-        const soldTokens = milestones[2].expectedTokenCount + offset; // 750.000
+        const soldTokens = IcoNumbers.Constants.Milestones[2].expectedTokenCount + offset; // 750.000
 
         await assertPrice(usdbnbprice, expectedUnitPriceUsd, tokenAmount, soldTokens);
     });
 
     it("should calculate the right price for the whole ICO", async () => {
         // all in first milestone
-        const tokenAmount = 15000000;
-        const expectedUnitPriceUsd = milestones[0].expectedPrice * ( (milestones[1].expectedTokenCount) / tokenAmount) +
-                                     milestones[1].expectedPrice * ( (milestones[2].expectedTokenCount - milestones[1].expectedTokenCount) / tokenAmount) +
-                                     milestones[2].expectedPrice * ( (milestones[3].expectedTokenCount - milestones[2].expectedTokenCount) / tokenAmount) + 
-                                     milestones[3].expectedPrice * ( (tokenAmount - milestones[3].expectedTokenCount) / tokenAmount);
+        const tokenAmount = IcoNumbers.Constants.HardCap;
+
+        const expectedUnitPriceUsd = IcoNumbers.Constants.Milestones[0].expectedPrice * ( (IcoNumbers.Constants.Milestones[1].expectedTokenCount) / tokenAmount) +
+                                     IcoNumbers.Constants.Milestones[1].expectedPrice * ( (IcoNumbers.Constants.Milestones[2].expectedTokenCount - IcoNumbers.Constants.Milestones[1].expectedTokenCount) / tokenAmount) +
+                                     IcoNumbers.Constants.Milestones[2].expectedPrice * ( (IcoNumbers.Constants.Milestones[3].expectedTokenCount - IcoNumbers.Constants.Milestones[2].expectedTokenCount) / tokenAmount) + 
+                                     IcoNumbers.Constants.Milestones[3].expectedPrice * ( (tokenAmount - IcoNumbers.Constants.Milestones[3].expectedTokenCount) / tokenAmount);
         
         const soldTokens = 0;
 
