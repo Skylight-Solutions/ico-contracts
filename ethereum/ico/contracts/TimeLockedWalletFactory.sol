@@ -79,12 +79,5 @@ contract TimeLockedWalletFactory {
 
         // Emit event.
         emit CreatedMono(wallet, msg.sender, _icoContract, block.timestamp);
-    }
-
-    // Prevents accidental sending of ether to the factory
-    receive () payable external {
-        revert();
-    }
-
-    
+    }    
 }

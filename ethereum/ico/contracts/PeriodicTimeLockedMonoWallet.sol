@@ -36,12 +36,6 @@ contract PeriodicTimeLockedMonoWallet
         unlockPercentage = _unlockPercentage;
     }
 
-    receive() external payable
-    {
-        // we do not accept any native coin on this wallet
-        revert();
-    }
-
     // callable by owner only, after specified time, only for Tokens implementing ERC20
     function withdrawTokens(address _tokenContract) public 
     {

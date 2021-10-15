@@ -43,12 +43,6 @@ contract PeriodicTimeLockedWallet
         unlockPercentage = _unlockPercentage;
     }
 
-    receive() external payable
-    {
-        // we do not accept any native coin on this wallet
-        revert();
-    }
-
     function initialize(uint256 _unlockDate) public onlyCreator 
     {
         if(initialized) {
