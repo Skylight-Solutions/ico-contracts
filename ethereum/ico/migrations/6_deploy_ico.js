@@ -3,7 +3,6 @@ var CollectCoin = artifacts.require("CollectCoin");
 var CollectCoinIco = artifacts.require("CollectCoinIco");
 var CollectCoinIcoMock = artifacts.require("CollectCoinIcoMock");
 var MilestonePricingStrategy = artifacts.require("MilestonePricingStrategy");
-var DefaultFinalizeAgent = artifacts.require("DefaultFinalizeAgent");
 var TimeLockedWalletFactory = artifacts.require("TimeLockedWalletFactory");
 const moment = require("moment")
 
@@ -34,8 +33,8 @@ let deployIco = (deployer, network, accounts, icoArtifact, pricingStrategy) => {
     {
         maxTokenCount =  web3.utils.toWei("20000000", "ether");
 
-        minFund = web3.utils.toWei("1300000", "ether"); 
-        investorTokenCap = web3.utils.toWei("30000", "ether");
+        minFund = web3.utils.toWei("1000000", "ether"); 
+        investorTokenCap = web3.utils.toWei("500000", "ether");
         tokenOwner = accounts[0];
 
         startsAt = today.unix(); 

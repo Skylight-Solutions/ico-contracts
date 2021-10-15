@@ -2,7 +2,6 @@ const CollectCoin = artifacts.require("CollectCoin");
 const CollectCoinIco = artifacts.require("CollectCoinIco");
 const CollectCoinIcoMock = artifacts.require("CollectCoinIcoMock");
 const PeriodicTimeLockedMonoWallet = artifacts.require("PeriodicTimeLockedMonoWallet");
-const DefaultFinalizeAgent = artifacts.require("DefaultFinalizeAgent");
 
 const toBN = (val) => new web3.utils.BN(val.toString())
 const toWei = (val) => web3.utils.toWei(val.toString(), "ether");
@@ -49,11 +48,7 @@ const invest = async (ico, accounts) => {
   }
   else console.log("Already finalized")
 
-  let finalizeAgentAddress = await ico.finalizeAgent();
-  let finalizeAgent = await DefaultFinalizeAgent.at(finalizeAgentAddress);
-
-  let wallets = await finalizeAgent.getAllWallets();
-  let monoWalletAddress = wallets[0];
+  let monoWalletAddress = await ico.timeLockedWallet();
 
   let monoWallet = await PeriodicTimeLockedMonoWallet.at(monoWalletAddress);
   let walletLockDate = await monoWallet.lockDate();
@@ -67,7 +62,6 @@ const invest = async (ico, accounts) => {
   console.log("walletUnlockPeriod\t\t", walletUnlockPeriod.toNumber())
   console.log("walletUnlockPercentage\t\t", walletUnlockPercentage.toString())
   console.log()
-  console.log("finalizeAgentAddress\t\t", finalizeAgentAddress)
   console.log("monoWalletAddress\t\t", monoWalletAddress)
   console.log()
   

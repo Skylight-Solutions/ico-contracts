@@ -49,14 +49,14 @@ contract("CollectCoinIco", accounts => {
     {
         let {remainingTokenAmount} = await getPriceForRemainingTokens();
 
-        const numberOfRequiredAccounts = remainingTokenAmount.div(toBN(IcoNumbers.Constants.InvestorCap));
+        const numberOfRequiredAccounts = toBN(fromWei(remainingTokenAmount)).div(toBN(IcoNumbers.Constants.InvestorCap));
         console.log("numberOfRequiredAccounts", numberOfRequiredAccounts.toString());
 
-        let accountIndex = 1 + Math.floor(fromWei(numberOfRequiredAccounts));
+        let accountIndex = 1 + numberOfRequiredAccounts.toNumber();
         console.log(`Using ${accountIndex} accounts to buy all tokens`);
 
         while(remainingTokenAmount > 0) {
-            const account = accounts[accountIndex--];
+            const account = accounts[accountIndex];
 
             const availableInvestment = await ico.availableInvestment({ from: account });
             console.log(accountIndex, `availableInvestment for ${account}`, fromWei(availableInvestment));
@@ -74,6 +74,8 @@ contract("CollectCoinIco", accounts => {
             await ico.send(totalPrice, { from: account});
 
             remainingTokenAmount = remainingTokenAmount.sub(availableInvestment);
+            accountIndex--;
+
             console.log("remainingTokenAmount", fromWei(remainingTokenAmount))
         }        
     });    

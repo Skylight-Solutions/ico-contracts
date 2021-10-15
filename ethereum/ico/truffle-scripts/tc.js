@@ -44,25 +44,6 @@ module.exports = async function(callback) {
     let {totalPrice: priceForRestWei} = await mps.calculatePriceForTokenAmount(availableTokensWei, tokensSoldWei, 18)
     let tokensForRest = await mps.calculateTokenAmount(priceForRestWei, tokensSoldWei, 18)
 
-    let investors = await ico.getAllInvestors();
-    for(i=0; i<investors.length; i++) {
-        console.log()
-
-        const tokenAmountOfWei = await ico.tokenAmountOf(investors[i]);
-        const investedAmountOfWei = await ico.investedAmountOf(investors[i]);
-        const tkAmount = await mps.calculateTokenAmount(investedAmountOfWei, 0, 18)
-
-        console.log(i);
-        console.log("======= investor", investors[i], "========");
-        //console.log("tokenAmountOfWei\t", tokenAmountOfWei.toString())
-        console.log("calc. token amount\t", tkAmount.toString());
-        console.log("tokenAmountOf\t\t", fromWei(tokenAmountOfWei), "CLCT");
-
-        //console.log("investedAmountOfWei\t", investedAmountOfWei.toString())
-        console.log("investedAmountOf\t", fromWei(investedAmountOfWei), "BNB")
-        
-        
-    }
     console.log()
     console.log("============= ICO Figures ============")
     console.log("icoState\t\t", icoState.toString())
