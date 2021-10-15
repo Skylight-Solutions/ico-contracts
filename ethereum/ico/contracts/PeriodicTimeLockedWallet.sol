@@ -28,6 +28,7 @@ contract PeriodicTimeLockedWallet
 
     mapping (address => uint256) private claimedAmountOf;
 
+    event WalletInitialized(address wallet, uint256 unlockDate);
     event WithdrewTokens(address tokenContract, address to, uint256 amount);
 
     constructor(address _owner, uint256 _unlockPeriod, uint _unlockPercentage)
@@ -51,6 +52,8 @@ contract PeriodicTimeLockedWallet
 
         unlockDate =_unlockDate;
         initialized = true;
+
+        emit WalletInitialized(address(this), _unlockDate);
     }
 
     // callable by owner only, after specified time, only for Tokens implementing ERC20
