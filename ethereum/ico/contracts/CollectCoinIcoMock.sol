@@ -56,11 +56,6 @@ contract CollectCoinIcoMock is ICollectCoinIco, CollectCoinIco {
         }
     }
 
-    function getAllInvestors() public override(ICollectCoinIco, CollectCoinIco) view returns (address[] memory)
-    {
-        return investorAddresses;
-    }
-
     function getState() public override(ICollectCoinIco, CollectCoinIco) view returns (State) {
         return state;
     }

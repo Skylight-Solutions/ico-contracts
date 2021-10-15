@@ -56,11 +56,9 @@ interface ICollectCoinIco {
     */
     function isMinimumGoalReached() external view returns (bool reached);
 
-    function getAllInvestors() external returns (address[] memory);
-
     /**
     * @dev low level token purchase ***DO NOT OVERRIDE***
     * @param _beneficiary Address performing the token purchase
     */
-    function buyTokens(address _beneficiary) external payable;
+    function buyTokens(address payable _beneficiary) external payable;
 }

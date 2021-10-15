@@ -36,9 +36,6 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     /* How many distinct addresses have invested */
     uint public investorCount = 0;
 
-    /* List of all investors */
-    address[] public investors;
-
     /* the UNIX timestamp start date of the ico */
     uint public startsAt;
 
@@ -69,6 +66,9 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
 
     // A refund has been processed
     event Withdrawn(address indexed refundee, uint256 weiAmount);
+
+    /* List of all investors */
+    mapping (address => address payable) public investors;
 
     /** How much ETH each address has invested to this crowdsale */
     mapping (address => uint256) public investedAmountOf;
@@ -149,7 +149,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     *
     * @return tokensBought How mony tokens were bought
     */
-    function buyTokens(address receiver, uint128 customerId, uint256 tokenAmount) stopInEmergency inState(State.Funding) internal returns(uint tokensBought) 
+    function buyTokens(address payable receiver, uint128 customerId, uint256 tokenAmount) stopInEmergency inState(State.Funding) internal returns(uint tokensBought) 
     {
         require(getState() == State.Funding || getState() == State.Success, "Contract not in Funding or Success state.");
 
@@ -164,7 +164,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
         if(investedAmountOf[receiver] == 0) {
             // A new investor
             investorCount++;
-            investors.push(receiver);
+            investors[receiver] = receiver;
         }
 
         // Update investor
@@ -263,10 +263,6 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
         return tokensSold >= minimumFundingGoal;
     }
 
-    function getAllInvestors() public override virtual view returns (address[] memory)
-    {
-        return investors;
-    }
 
     // -----------------------------------------
     // Crowdsale external interface
@@ -280,7 +276,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     * @dev low level token purchase ***DO NOT OVERRIDE***
     * @param _beneficiary Address performing the token purchase
     */
-    function buyTokens(address _beneficiary) public override virtual payable {
+    function buyTokens(address payable _beneficiary) public override virtual payable {
 
         uint256 weiAmount = msg.value;
         _preValidatePurchase(_beneficiary, weiAmount);
@@ -292,7 +288,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     }
 
     receive () external payable {
-        buyTokens(msg.sender);
+        buyTokens(payable(msg.sender));
     }
 
     /**
@@ -301,17 +297,20 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
      */
     function claimRefund(address payable refundee) inState(State.Refunding) public {
         
-        uint256 payment = investedAmountOf[refundee];
+        address payable refundAddress = investors[refundee];
+        require(refundAddress != address(0), "Not an Investor");
+
+        uint256 payment = investedAmountOf[refundAddress];
         require(payment > 0, "No refund available");
 
-        investedAmountOf[refundee] = 0;
-        tokenAmountOf[refundee] = 0;
+        investedAmountOf[refundAddress] = 0;
+        tokenAmountOf[refundAddress] = 0;
 
         loadedRefund += payment;
         
-        refundee.transfer(payment);
+        refundAddress.transfer(payment);
 
-        emit Withdrawn(refundee, payment);
+        emit Withdrawn(refundAddress, payment);
     }
 
 
