@@ -65,9 +65,10 @@ module.exports = {
     // options below to some value.
     //
     development: {
-     host: "172.30.176.1",     // Localhost (default: none) -- WSL: the IP of the vEthernet (WSL) adapter under network settings
+     host: "172.22.0.1",     // Localhost (default: none) -- WSL: the IP of the vEthernet (WSL) adapter under network settings
      port: 7545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
+     gasPrice: 8500000000, // main: 6500000000
     },
     bsctestnet: {
       provider: () => provider_bsctest,
@@ -81,7 +82,8 @@ module.exports = {
       network_id: 56,
       confirmations: 10,
       timeoutBlocks: 200,
-      gasPrice: 8500000000, // default: 20000000000
+      gasPrice: 6000000000, 
+      gdefault: 20000000000, // default
       skipDryRun: false
     }
     // Another network with more advanced options...

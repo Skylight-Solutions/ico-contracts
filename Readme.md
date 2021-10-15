@@ -14,7 +14,7 @@ The contracts outline the basic rules for our token-sale event:
 - if you find any bugs in our code, please let us know. We're willing to reciprocate :)
 
 ## Development
-Use Ganache to deploy locally. 
+Use Ganache to deploy locally.
 
 Update `truffle-config.js` (_networks.development.host_) to point to your local Ganache. 
 
@@ -32,4 +32,11 @@ truffle compile
 
 ```bash
 truffle migrate
+```
+
+## Tests
+To run the tests, you need enough accounts with enough BNB/ETH. Recommended are 100 accounts with 1M BNB each.
+
+```bash
+truffle test
 ```
