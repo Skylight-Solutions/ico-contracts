@@ -23,7 +23,7 @@ contract TimeLockedWalletFactory {
     }
 
     function getWallets(address _user) 
-        public
+        external
         view
         returns(address[] memory)
     {
@@ -37,34 +37,34 @@ contract TimeLockedWalletFactory {
     * @param _wallet The unitialized TimeLockedWallet contract.
     * @param _unlockDate The unlock date that is set to the wallet.
     */
-    function initializeTimeLockedWallet(address payable _wallet, uint256 _unlockDate) public onlyOwner {
+    function initializeTimeLockedWallet(address payable _wallet, uint256 _unlockDate) external onlyOwner {
         PeriodicTimeLockedWallet wallet = PeriodicTimeLockedWallet(_wallet);
 
         wallet.initialize(_unlockDate);
     }
 
     function newPeriodicTimeLockedWallet(address _owner, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage)
-        public onlyOwner
+        external onlyOwner
         returns(address wallet)
     {
         // Create new wallet.
         PeriodicTimeLockedWallet tlwallet = new PeriodicTimeLockedWallet(_owner, _unlockPeriod, _unlockPercentage);
-        
-        if(_unlockDate > 0) {
-            tlwallet.initialize(_unlockDate);
-        }
+
+        // Emit event.
+        emit Created(wallet, msg.sender, _owner, block.timestamp);
 
         wallet = address(tlwallet);
 
         // Add wallet to owner's wallets.
         wallets[_owner].push(wallet);
 
-        // Emit event.
-        emit Created(wallet, msg.sender, _owner, block.timestamp);
+        if(_unlockDate > 0) {
+            tlwallet.initialize(_unlockDate);
+        }
     }
 
     function newPeriodicTimeLockedMonoWallet(address _tokenOwner, address _icoContract, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage)
-        public
+        external
         returns(address wallet)
     {
         ICollectCoinIco ico = ICollectCoinIco(_icoContract);
