@@ -211,9 +211,9 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
         uint256 walletLockDate = _walletLockDate > 0 ? _walletLockDate : block.timestamp;
         require(walletLockDate >= block.timestamp, "LockDate cannot be in the past");
 
-        timeLockedWallet = walletFactory.newPeriodicTimeLockedMonoWallet(tokenOwner, address(this), walletLockDate, walletUnlockPeriod, walletUnlockPercentage);
-
         finalized = true;
+
+        timeLockedWallet = walletFactory.newPeriodicTimeLockedMonoWallet(tokenOwner, address(this), walletLockDate, walletUnlockPeriod, walletUnlockPercentage);
 
         // Pocket the money, or fail the transaction if we for some reason cannot send the money to our multisig
         if(!multisigWallet.send(weiRaised)) revert();
