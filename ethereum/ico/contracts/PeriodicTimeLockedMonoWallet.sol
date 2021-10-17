@@ -37,7 +37,7 @@ contract PeriodicTimeLockedMonoWallet
     }
 
     // callable by owner only, after specified time, only for Tokens implementing ERC20
-    function withdrawTokens(address _tokenContract) public 
+    function withdrawTokens(address _tokenContract) external 
     {
        //require(block.timestamp >= unlockDate);
 
@@ -48,15 +48,16 @@ contract PeriodicTimeLockedMonoWallet
        
        claimedAmountOf[msg.sender] += unlockedTokenAmount;
 
-       if(!token.transferFrom(tokenOwner, msg.sender, unlockedTokenAmount)) revert();
        emit WithdrewTokens(_tokenContract, msg.sender, unlockedTokenAmount);
+
+       if(!token.transferFrom(tokenOwner, msg.sender, unlockedTokenAmount)) revert();
     }
 
-    function balance() public view returns (uint256) {
+    function balance() external view returns (uint256) {
         return icoContract.tokenAmountOf(msg.sender) - claimedAmountOf[msg.sender];
     }
 
-    function claimed() public view returns (uint256) {
+    function claimed() external view returns (uint256) {
         return claimedAmountOf[msg.sender];
     }
 

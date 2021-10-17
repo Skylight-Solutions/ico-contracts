@@ -14,7 +14,6 @@ contract PeriodicTimeLockedWallet
 
     uint256 public unlockPeriod;
     uint public unlockPercentage;
-    address tokenOwner;
 
     modifier onlyOwner {
         require(msg.sender == owner, "Only Owner");
@@ -44,7 +43,7 @@ contract PeriodicTimeLockedWallet
         unlockPercentage = _unlockPercentage;
     }
 
-    function initialize(uint256 _unlockDate) public onlyCreator 
+    function initialize(uint256 _unlockDate) external onlyCreator 
     {
         if(initialized) {
             revert("Already Initialized");
@@ -57,24 +56,25 @@ contract PeriodicTimeLockedWallet
     }
 
     // callable by owner only, after specified time, only for Tokens implementing ERC20
-    function withdrawTokens(address _tokenContract, uint256 _amount) public onlyOwner
+    function withdrawTokens(address _tokenContract, uint256 _amount) external onlyOwner
     {
         uint256 unlockedTokenAmount = getUnlockedTokenAmount(_tokenContract);
         require(_amount <= unlockedTokenAmount, "Not enought unlocked tokens available");
 
         claimedAmountOf[_tokenContract] += _amount;
 
+        emit WithdrewTokens(_tokenContract, owner, unlockedTokenAmount);
+
         ERC20 token = ERC20(_tokenContract);
         if(!token.transfer(owner, _amount)) revert();
-        emit WithdrewTokens(_tokenContract, owner, unlockedTokenAmount);
     }
 
-    function balance(address tokenAddress) public view returns (uint256) {
+    function balance(address tokenAddress) external view returns (uint256) {
         ERC20 token = ERC20(tokenAddress);
         return token.balanceOf(address(this));
     }
 
-    function claimed(address tokenAddress) public view returns (uint256) {
+    function claimed(address tokenAddress) external view returns (uint256) {
         return claimedAmountOf[tokenAddress];
     }
 

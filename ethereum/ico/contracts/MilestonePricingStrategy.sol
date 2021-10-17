@@ -30,9 +30,6 @@ contract MilestonePricingStrategy is IPricingStrategy, Ownable
   // Store milestones in a fixed array, so that it can be seen in a blockchain explorer
   Milestone[4] public milestones;
 
-  // How many active milestones we have
-  uint public milestoneCount;
-
   constructor(address _priceFeed)
   {
     priceFeed = AggregatorV3Interface(_priceFeed);
@@ -53,18 +50,18 @@ contract MilestonePricingStrategy is IPricingStrategy, Ownable
   /// @dev Iterate through milestones. You reach end of milestones when price = 0
   /// @return soldTokenCount
   /// @return price
-  function getMilestone(uint n) public view returns (uint soldTokenCount, uint price) {
+  function getMilestone(uint n) external view returns (uint soldTokenCount, uint price) {
     soldTokenCount = milestones[n].soldTokenCount;
     price = milestones[n].price;
     //return (milestones[n].soldTokenCount, milestones[n].price);
   }
 
-  function getAllMilestones() public view returns (Milestone[4] memory)
+  function getAllMilestones() external view returns (Milestone[4] memory)
     {
         return milestones;
     }
 
-  function isPricingStrategy() override public pure returns (bool) {
+  function isPricingStrategy() override external pure returns (bool) {
     return true;
   }
 
@@ -72,12 +69,12 @@ contract MilestonePricingStrategy is IPricingStrategy, Ownable
    *
    * Checks that pricing strategy matches crowdsale parameters.
    */
-  function isSane() override public pure returns (bool)
+  function isSane() override external pure returns (bool)
   {
     return true;
   }
 
-  function currentUnitPrice(uint256 totalTokensSold) override public view returns (uint unitPrice, uint feedPrice)
+  function currentUnitPrice(uint256 totalTokensSold) override external view returns (uint unitPrice, uint feedPrice)
   {
     return getCurrentPrice(totalTokensSold);
   }

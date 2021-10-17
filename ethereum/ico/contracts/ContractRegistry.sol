@@ -17,7 +17,7 @@ contract ContractRegistry {
         owner = msg.sender;
     }
 
-    function setIcoAddress(address _address) public onlyOwner {
+    function setIcoAddress(address _address) external onlyOwner {
         icoAddress = _address;
     }
 }

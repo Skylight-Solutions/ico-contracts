@@ -112,7 +112,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_beneficiary\",\"type\":\"address\"}],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_walletLockDate\",\"type\":\"uint256\"}],\"name\":\"finalize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getState\",\"outputs\":[{\"internalType\":\"enum ICollectCoinIco.State\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isFull\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isMinimumGoalReached\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"reached\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenOwner\",\"type\":\"address\"}],\"name\":\"setTokenOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TimeLockedWalletFactory\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setWalletFactory\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_investor\",\"type\":\"address\"}],\"name\":\"tokenAmountOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyTokens(address)\":{\"details\":\"low level token purchase ***DO NOT OVERRIDE***\",\"params\":{\"_beneficiary\":\"Address performing the token purchase\"}},\"finalize(uint256)\":{\"params\":{\"_walletLockDate\":\"The time from when the locking calculations for the investor's time locked tokens begin to count\"}},\"isMinimumGoalReached()\":{\"returns\":{\"reached\":\"== true if the crowdsale has raised enough money to be a successful.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"finalize(uint256)\":{\"notice\":\"Finalize a succcesful crowdsale. The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\"},\"getState()\":{\"notice\":\"state machine management. We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale.\"},\"isFull()\":{\"notice\":\"Check if the current crowdsale is full and we can no longer sell any tokens.\"},\"setWalletFactory(address)\":{\"notice\":\"Allow to (re)set finalize agent. Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes.\"},\"tokenAmountOf(address)\":{\"notice\":\"How much tokens this crowdsale has credited for each investor address \"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ICollectCoinIco.sol\":\"ICollectCoinIco\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xfeccdcbf67b2006a715e5af1a4c7556004d95b2806552b5cc54e46e8eb7e887b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://45b1f9043c0fb450272f20ed19ef633fcba1b129d602651a856dfae1a2243a2c\",\"dweb:/ipfs/QmUTSQiDikkcNtTtyDpkEwCM5ztVUUh9c1inBukn6HC5Vr\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4c3df1a7ca104b633a7d81c6c6f5192367d150cd5a32cba81f7f27012729013\",\"dweb:/ipfs/QmSim72e3ZVsfgZt8UceCvbiSuMRHR6WDsiamqNzZahGSY\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]},\"@openzeppelin/contracts/utils/math/SafeMath.sol\":{\"keccak256\":\"0x2526b7c6a366fc211bbc176078ab02b83833e7682abcc5b3bed9d700b34e2a3e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5f9529d3d365e8415155cee11394e0f7c0de2152b601b7e77508fce16cb4a509\",\"dweb:/ipfs/QmVhbcLVsAzvqfjsdLwy25XMjgVJm7Z3w2JCNiNbZF2GHT\"]},\"project:/contracts/CollectCoin.sol\":{\"keccak256\":\"0x4812a283343daa2baaf5dec59778296f03efd00bb4424acabd5ad0bc5adc6ec5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://7a0fe570689c08b6285dee6b7a78ed42bbab11b46c545c37742e5d39d724a6e2\",\"dweb:/ipfs/QmReem7yMomrManhhfAQdHzmWafqVxodegdT3QKAapAW3S\"]},\"project:/contracts/ICollectCoinIco.sol\":{\"keccak256\":\"0x15032a68a19c6cc3751bbee04b5e62c52e521f3e2d5f98c11e9fba3209d74f0c\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://0ca846f5f48ef3701c46d377e6f0b4d4025782467530afb4f467a754cf223edc\",\"dweb:/ipfs/QmX8JfShFdbMv1RvVoTsLWYcHoxgWY3EYSdktgBSsKs7X7\"]},\"project:/contracts/PeriodicTimeLockedMonoWallet.sol\":{\"keccak256\":\"0x3675366260c6a0867140f2a025fa0112f791fe86b77433ef7458eb8ea8a3bb0b\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://58e6c53c9abbbba31939c4e71a6a6f2df70a4dfb9efdddff60e285251ecc032d\",\"dweb:/ipfs/QmXGcCUKXTzoKtfFRYNE4vhHWAVwQmuQkZAvKL2FuSkE1e\"]},\"project:/contracts/PeriodicTimeLockedWallet.sol\":{\"keccak256\":\"0xa55c30c2dc22865dedf708ae0d666ec57ecc107fdf51d5666b330ffa048c3e65\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://4f02fbe52d670674d77054c0933a24f5ce620794b3a1bdc13a78c0c71e2b7e56\",\"dweb:/ipfs/QmXwZkudYNRXzA43QUfzkY3wV9kq1x6tgM64SVPYc2Krx5\"]},\"project:/contracts/TimeLockedWalletFactory.sol\":{\"keccak256\":\"0x5f046d780d8f885cd21f589d3d65036c6d6179bfaf3744e449fd1b7bfe59ff20\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://fa13877112b7beb032d792adb7d87523b7d165d0a823d9b5e475db95406e02f0\",\"dweb:/ipfs/QmYvtRq231YjVVovbW5wU4pDAqPrtFtVpSnjp18xiobNVn\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_beneficiary\",\"type\":\"address\"}],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_walletLockDate\",\"type\":\"uint256\"}],\"name\":\"finalize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getState\",\"outputs\":[{\"internalType\":\"enum ICollectCoinIco.State\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isFull\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isMinimumGoalReached\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"reached\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenOwner\",\"type\":\"address\"}],\"name\":\"setTokenOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contract TimeLockedWalletFactory\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setWalletFactory\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_investor\",\"type\":\"address\"}],\"name\":\"tokenAmountOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyTokens(address)\":{\"details\":\"low level token purchase ***DO NOT OVERRIDE***\",\"params\":{\"_beneficiary\":\"Address performing the token purchase\"}},\"finalize(uint256)\":{\"params\":{\"_walletLockDate\":\"The time from when the locking calculations for the investor's time locked tokens begin to count\"}},\"isMinimumGoalReached()\":{\"returns\":{\"reached\":\"== true if the crowdsale has raised enough money to be a successful.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"finalize(uint256)\":{\"notice\":\"Finalize a succcesful crowdsale. The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.\"},\"getState()\":{\"notice\":\"state machine management. We make it a function and do not assign the result to a variable, so there is no chance of the variable being stale.\"},\"isFull()\":{\"notice\":\"Check if the current crowdsale is full and we can no longer sell any tokens.\"},\"setWalletFactory(address)\":{\"notice\":\"Allow to (re)set finalize agent. Design choice: no state restrictions on setting this, so that we can fix fat finger mistakes.\"},\"tokenAmountOf(address)\":{\"notice\":\"How much tokens this crowdsale has credited for each investor address \"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/ICollectCoinIco.sol\":\"ICollectCoinIco\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xfeccdcbf67b2006a715e5af1a4c7556004d95b2806552b5cc54e46e8eb7e887b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://45b1f9043c0fb450272f20ed19ef633fcba1b129d602651a856dfae1a2243a2c\",\"dweb:/ipfs/QmUTSQiDikkcNtTtyDpkEwCM5ztVUUh9c1inBukn6HC5Vr\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x83fe24f5c04a56091e50f4a345ff504c8bff658a76d4c43b16878c8f940c53b2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d4c3df1a7ca104b633a7d81c6c6f5192367d150cd5a32cba81f7f27012729013\",\"dweb:/ipfs/QmSim72e3ZVsfgZt8UceCvbiSuMRHR6WDsiamqNzZahGSY\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]},\"@openzeppelin/contracts/utils/math/SafeMath.sol\":{\"keccak256\":\"0x2526b7c6a366fc211bbc176078ab02b83833e7682abcc5b3bed9d700b34e2a3e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5f9529d3d365e8415155cee11394e0f7c0de2152b601b7e77508fce16cb4a509\",\"dweb:/ipfs/QmVhbcLVsAzvqfjsdLwy25XMjgVJm7Z3w2JCNiNbZF2GHT\"]},\"project:/contracts/CollectCoin.sol\":{\"keccak256\":\"0x4812a283343daa2baaf5dec59778296f03efd00bb4424acabd5ad0bc5adc6ec5\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://7a0fe570689c08b6285dee6b7a78ed42bbab11b46c545c37742e5d39d724a6e2\",\"dweb:/ipfs/QmReem7yMomrManhhfAQdHzmWafqVxodegdT3QKAapAW3S\"]},\"project:/contracts/ICollectCoinIco.sol\":{\"keccak256\":\"0x15032a68a19c6cc3751bbee04b5e62c52e521f3e2d5f98c11e9fba3209d74f0c\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://0ca846f5f48ef3701c46d377e6f0b4d4025782467530afb4f467a754cf223edc\",\"dweb:/ipfs/QmX8JfShFdbMv1RvVoTsLWYcHoxgWY3EYSdktgBSsKs7X7\"]},\"project:/contracts/PeriodicTimeLockedMonoWallet.sol\":{\"keccak256\":\"0x0d9c4142864580d2b265147acc99d23bd66773c2d1a97931534bc320d693d9fc\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://9220a34c06f3963dc32399567972c1372ba5834c612b5e6b399cce3a706336cc\",\"dweb:/ipfs/QmX5gpVydWXmC8o7vkxKrA9Hafo22rSobwS53G3CqCSZbQ\"]},\"project:/contracts/PeriodicTimeLockedWallet.sol\":{\"keccak256\":\"0xcfa47f86d28ac8df01ed5df5b7193b041ef07a2f6396fe0edf6b7a061424c97d\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://39d4b65c57d1b364718a2bac57080b443d641dfee109f1b860f2718fab29f71e\",\"dweb:/ipfs/Qmd6trvDU4bgoMn9MhbRaJrpYB1TTQJFTCscesmGwsbSkW\"]},\"project:/contracts/TimeLockedWalletFactory.sol\":{\"keccak256\":\"0x5f046d780d8f885cd21f589d3d65036c6d6179bfaf3744e449fd1b7bfe59ff20\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://fa13877112b7beb032d792adb7d87523b7d165d0a823d9b5e475db95406e02f0\",\"dweb:/ipfs/QmYvtRq231YjVVovbW5wU4pDAqPrtFtVpSnjp18xiobNVn\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -147,16 +147,16 @@
         201
       ],
       "PeriodicTimeLockedMonoWallet": [
-        3259
+        3257
       ],
       "PeriodicTimeLockedWallet": [
-        3569
+        3565
       ],
       "SafeMath": [
         1146
       ],
       "TimeLockedWalletFactory": [
-        3889
+        3885
       ]
     },
     "id": 2300,
@@ -181,7 +181,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2300,
-        "sourceUnit": 3890,
+        "sourceUnit": 3886,
         "src": "64:39:13",
         "symbolAliases": [],
         "unitAlias": ""
@@ -441,7 +441,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3889",
+                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3885",
                     "typeString": "contract TimeLockedWalletFactory"
                   },
                   "typeName": {
@@ -451,13 +451,13 @@
                       "id": 2263,
                       "name": "TimeLockedWalletFactory",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 3889,
+                      "referencedDeclaration": 3885,
                       "src": "1478:23:13"
                     },
-                    "referencedDeclaration": 3889,
+                    "referencedDeclaration": 3885,
                     "src": "1478:23:13",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3889",
+                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3885",
                       "typeString": "contract TimeLockedWalletFactory"
                     }
                   },
@@ -819,16 +819,16 @@
         201
       ],
       "PeriodicTimeLockedMonoWallet": [
-        3259
+        3257
       ],
       "PeriodicTimeLockedWallet": [
-        3569
+        3565
       ],
       "SafeMath": [
         1146
       ],
       "TimeLockedWalletFactory": [
-        3889
+        3885
       ]
     },
     "id": 2300,
@@ -853,7 +853,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 2300,
-        "sourceUnit": 3890,
+        "sourceUnit": 3886,
         "src": "64:39:13",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1113,7 +1113,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3889",
+                    "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3885",
                     "typeString": "contract TimeLockedWalletFactory"
                   },
                   "typeName": {
@@ -1123,13 +1123,13 @@
                       "id": 2263,
                       "name": "TimeLockedWalletFactory",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 3889,
+                      "referencedDeclaration": 3885,
                       "src": "1478:23:13"
                     },
-                    "referencedDeclaration": 3889,
+                    "referencedDeclaration": 3885,
                     "src": "1478:23:13",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3889",
+                      "typeIdentifier": "t_contract$_TimeLockedWalletFactory_$3885",
                       "typeString": "contract TimeLockedWalletFactory"
                     }
                   },
@@ -1472,7 +1472,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-10-15T12:50:46.347Z",
+  "updatedAt": "2021-10-17T13:56:56.149Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

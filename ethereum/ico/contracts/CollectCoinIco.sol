@@ -184,15 +184,15 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
         return tokenAmount;
     }
 
-    function setStartsAt(uint256 _startsAt) public onlyOwner {
+    function setStartsAt(uint256 _startsAt) external onlyOwner {
         startsAt = _startsAt;
     }
 
-    function setEndsAt(uint256 _endsAt) public onlyOwner {
+    function setEndsAt(uint256 _endsAt) external onlyOwner {
         endsAt = _endsAt;
     }
 
-    function availableInvestment() public view returns(uint256)
+    function availableInvestment() external view returns(uint256)
     {
         return tokenInvestorCap - tokenAmountOf[msg.sender];
     }
@@ -203,7 +203,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     * The owner can triggre a call the contract that provides post-crowdsale actions, like releasing the tokens.
     * @param _walletLockDate The time from when the locking calculations for the investor's time locked tokens begin to count
     */
-    function finalize(uint256 _walletLockDate) public override inState(State.Success) onlyOwner stopInEmergency {
+    function finalize(uint256 _walletLockDate) external override inState(State.Success) onlyOwner stopInEmergency {
 
         require(!finalized, "already finalized");
         require(isMinimumGoalReached(), "goal not reached");
@@ -219,11 +219,11 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
         if(!multisigWallet.send(weiRaised)) revert();
     }
 
-    function setWalletFactory(TimeLockedWalletFactory addr) public override onlyOwner {
+    function setWalletFactory(TimeLockedWalletFactory addr) external override onlyOwner {
         walletFactory = addr;
     }
 
-    function setTokenOwner(address _tokenOwner) public override onlyOwner {
+    function setTokenOwner(address _tokenOwner) external override onlyOwner {
 
         uint balance = token.balanceOf(_tokenOwner);
 
@@ -295,7 +295,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
      * @dev Investors can claim refunds here if crowdsale is unsuccessful.
      * @param refundee Whose refund will be claimed.
      */
-    function claimRefund(address payable refundee) inState(State.Refunding) public {
+    function claimRefund(address payable refundee) inState(State.Refunding) external {
         
         address payable refundAddress = investors[refundee];
         require(refundAddress != address(0), "Not an Investor");
@@ -308,9 +308,9 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
 
         loadedRefund += payment;
         
-        refundAddress.transfer(payment);
-
         emit Withdrawn(refundAddress, payment);
+
+        refundAddress.transfer(payment);
     }
 
 
