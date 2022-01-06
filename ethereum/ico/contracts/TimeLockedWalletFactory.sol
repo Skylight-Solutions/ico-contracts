@@ -70,7 +70,7 @@ contract TimeLockedWalletFactory {
         ICollectCoinIco ico = ICollectCoinIco(_icoContract);
 
         // Create new wallet.
-        PeriodicTimeLockedMonoWallet tlwallet = new PeriodicTimeLockedMonoWallet(msg.sender, ico, _unlockDate, _unlockPeriod, _unlockPercentage, _tokenOwner);
+        PeriodicTimeLockedMonoWallet tlwallet = new PeriodicTimeLockedMonoWallet(ico, _unlockDate, _unlockPeriod, _unlockPercentage, _tokenOwner);
         
         wallet = address(tlwallet);
 

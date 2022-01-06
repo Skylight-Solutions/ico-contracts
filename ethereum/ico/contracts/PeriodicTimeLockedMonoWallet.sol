@@ -8,27 +8,23 @@ import "./ICollectCoinIco.sol";
 
 contract PeriodicTimeLockedMonoWallet
 {
-    address public creator;
-    uint256 public unlockDate;
-    uint256 public createdAt;
+    uint256 public immutable unlockDate;
+    uint256 public immutable unlockPeriod;
+    uint public immutable unlockPercentage;
 
-    uint256 public unlockPeriod;
-    uint public unlockPercentage;
-    address tokenOwner;
+    address private immutable tokenOwner;
 
-    ICollectCoinIco public icoContract;
+    ICollectCoinIco public immutable icoContract;
 
     mapping (address => uint256) private claimedAmountOf;
 
     event WithdrewTokens(address tokenContract, address to, uint256 amount);
 
-    constructor(address _creator, ICollectCoinIco _icoContract, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage, address _tokenOwner)
+    constructor(ICollectCoinIco _icoContract, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage, address _tokenOwner)
     {
-        creator = _creator;
         icoContract = _icoContract;
 
         unlockDate = _unlockDate;
-        createdAt = block.timestamp;
         tokenOwner = _tokenOwner;
 
         // unlockedAmount = 0;

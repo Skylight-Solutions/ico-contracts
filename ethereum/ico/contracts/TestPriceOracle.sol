@@ -28,7 +28,7 @@ contract TestPriceOracle is AggregatorV3Interface {
       uint80 answeredInRound
     ) {
         roundId = 14;
-        answer = 28698250115; // 286.98250115 USD for 1 BNB
+        answer = 51198250115; // 511.98250115 USD for 1 BNB
         startedAt = 1234567788;
         updatedAt = 1234567790;
         answeredInRound = 1;

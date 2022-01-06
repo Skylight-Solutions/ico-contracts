@@ -9,7 +9,7 @@ import "./CollectCoin.sol";
 import "./Haltable.sol";
 import "./IPricingStrategy.sol";
 
-contract CollectCoinIco is Haltable, ICollectCoinIco  {
+contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
 
     using SafeMath for uint256;
 
@@ -216,7 +216,8 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
         timeLockedWallet = walletFactory.newPeriodicTimeLockedMonoWallet(tokenOwner, address(this), walletLockDate, walletUnlockPeriod, walletUnlockPercentage);
 
         // Pocket the money, or fail the transaction if we for some reason cannot send the money to our multisig
-        if(!multisigWallet.send(weiRaised)) revert();
+        (bool success,) = multisigWallet.call{value: weiRaised}("");
+        require(success, "Failed to send funds");
     }
 
     function setWalletFactory(TimeLockedWalletFactory addr) external override onlyOwner {
@@ -273,7 +274,7 @@ contract CollectCoinIco is Haltable, ICollectCoinIco  {
     }
 
     /**
-    * @dev low level token purchase ***DO NOT OVERRIDE***
+    * @dev low level token purchase
     * @param _beneficiary Address performing the token purchase
     */
     function buyTokens(address payable _beneficiary) private {

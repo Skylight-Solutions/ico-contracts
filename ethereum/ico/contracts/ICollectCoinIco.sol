@@ -55,10 +55,4 @@ interface ICollectCoinIco {
     * @return reached == true if the crowdsale has raised enough money to be a successful.
     */
     function isMinimumGoalReached() external view returns (bool reached);
-
-    /**
-    * @dev low level token purchase ***DO NOT OVERRIDE***
-    * @param _beneficiary Address performing the token purchase
-    */
-    function buyTokens(address payable _beneficiary) external payable;
 }
