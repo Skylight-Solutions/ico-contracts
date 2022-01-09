@@ -3,7 +3,7 @@ pragma solidity ^0.8.6;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 import "./IPricingStrategy.sol";
 import "./CollectCoinIco.sol";
@@ -38,13 +38,13 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
     milestones[0].price = 0.12 * 10 ** 8;
 
     milestones[1].soldTokenCount = 1000000 * 10**18;
-    milestones[1].price = 0.14 * 10 ** 8;
+    milestones[1].price = 0.13 * 10 ** 8;
 
-    milestones[2].soldTokenCount = 2000000 * 10**18;
-    milestones[2].price = 0.16 * 10 ** 8;
+    milestones[2].soldTokenCount = 2250000 * 10**18;
+    milestones[2].price = 0.14 * 10 ** 8;
 
-    milestones[3].soldTokenCount = 2500000 * 10**18;
-    milestones[3].price = 0.18 * 10 ** 8;
+    milestones[3].soldTokenCount = 3750000 * 10**18;
+    milestones[3].price = 0.15 * 10 ** 8;
 
     // milestones[0].soldTokenCount = 0;
     // milestones[0].price = 0.12 * 10 ** 8;
@@ -113,31 +113,31 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
     uint i;
     for(i=0; i<milestones.length; i++) {
       bool isLastMilestone = i+1 == milestones.length;
-      uint unitPriceBnbWei = (milestones[i].price * 10**decimals) / uint(feedPrice);
+      uint unitPriceBnbWei = milestones[i].price.mul(10**decimals).div(uint(feedPrice));
       
       // the current milestones token capacity: if it's the last milestone, there are as many tokens as the sent wei can buy
-      currentCapacity = isLastMilestone ? (availableWei * 10**decimals / unitPriceBnbWei) + tokensSold : milestones[i+1].soldTokenCount;
+      currentCapacity = isLastMilestone ? availableWei.mul(10**decimals).div(unitPriceBnbWei).add(tokensSold) : milestones[i+1].soldTokenCount;
 
       // if this milestone hasn't been sold out yet, we start selling tokens from here
       if(tokensSold < currentCapacity) 
       {
         // get the remaining token count for this level
-        uint availableTokensInMilestone = isLastMilestone ? (availableWei * 10**decimals / unitPriceBnbWei) : currentCapacity - tokensSold;
+        uint availableTokensInMilestone = isLastMilestone ? availableWei.mul(10**decimals).div(unitPriceBnbWei) : currentCapacity.sub(tokensSold);
 
         // calculate the price for this level
         //uint tokenPriceWei = (milestones[i].price * 10**decimals) / feedPrice;
-        uint maxBuyableTokens = availableWei * 10**decimals / unitPriceBnbWei;
+        uint maxBuyableTokens = availableWei.mul(10**decimals).div(unitPriceBnbWei);
         //return maxBuyableTokens;
 
         uint buyableTokens = maxBuyableTokens >= availableTokensInMilestone ? availableTokensInMilestone : maxBuyableTokens;
 
         // reduce the tokenAmount by the available tokens of this milestone
-        tokenAmount = tokenAmount + buyableTokens;
+        tokenAmount = tokenAmount.add(buyableTokens);
 
-        availableWei = availableWei - (buyableTokens * unitPriceBnbWei) / 10**decimals;
+        availableWei = availableWei.sub(buyableTokens.mul(unitPriceBnbWei).div(10**decimals));
 
         // increase tokensSold by the amount of tokens just "sold"
-        tokensSold = tokensSold + buyableTokens;
+        tokensSold = tokensSold.add(buyableTokens);
       }
 
       // if all wei has been spent, return the token amount
@@ -167,13 +167,12 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
       // recalculate the currently available capacity of this milestone
       // the upper limit comes from the next milestone's entry level. 
       // if we're in the last milestone, the upper limit is the requested amount
-      currentCapacity = isLastMilestone ? tokensSold + tokenAmount + 1 : milestones[i+1].soldTokenCount;
+      currentCapacity = isLastMilestone ? tokensSold.add(tokenAmount).add(1) : milestones[i+1].soldTokenCount;
 
       // if this milestone hasn't been sold out yet, we start selling tokens from here
-      //if(tokensSold == 0 || tokensSold < milestones[i].soldTokenCount + currentCapacity) {
       if(tokensSold < currentCapacity) {
         // get the remaining token count for this level
-        uint availableTokensInMilestone = isLastMilestone ? tokenAmount : currentCapacity - tokensSold;
+        uint availableTokensInMilestone = isLastMilestone ? tokenAmount : currentCapacity.sub(tokensSold);
 
         // sell all remaining tokens of this milestone if requested amount is greater, otherwise the remaing requested tokens
         uint tokensToSell = availableTokensInMilestone;
@@ -182,16 +181,15 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
         }
 
         // calculate the price for this level, sum up for each milestone
-        uint tokenPriceWei = (milestones[i].price * 10 ** decimals) / feedPrice;
+        uint tokenPriceWei = milestones[i].price.mul(10 ** decimals).div(feedPrice);
         
-        totalPrice += (tokensToSell.mul(tokenPriceWei) / 10 ** decimals);
-        //totalPrice = i;
+        totalPrice = totalPrice.add(tokensToSell.mul(tokenPriceWei).div(10 ** decimals));
 
         // reduce the tokenAmount by the available tokens of this milestone
-        tokenAmount = tokenAmount - tokensToSell;
+        tokenAmount = tokenAmount.sub(tokensToSell);
 
         // increase tokensSold by the amount of tokens just "sold"
-        tokensSold = tokensSold + tokensToSell;
+        tokensSold = tokensSold.add(tokensToSell);
       }
 
       // if all requested tokens have been calculated, return the price
@@ -214,7 +212,7 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
 
     feedPrice = uint(price);
     uint usdPrice = milestone.price;
-    unitPrice = (usdPrice * 10 ** 18) / uint(feedPrice);
+    unitPrice = usdPrice.mul(10 ** 18).div(uint(feedPrice));
 
     return (unitPrice, feedPrice);
   }

@@ -2,12 +2,15 @@
 pragma solidity ^0.8.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 import "./CollectCoin.sol";
 import "./ICollectCoinIco.sol";
 
 contract PeriodicTimeLockedMonoWallet
 {
+    using SafeMath for uint;
+    
     uint256 public immutable unlockDate;
     uint256 public immutable unlockPeriod;
     uint public immutable unlockPercentage;
@@ -35,8 +38,6 @@ contract PeriodicTimeLockedMonoWallet
     // callable by owner only, after specified time, only for Tokens implementing ERC20
     function withdrawTokens(address _tokenContract) external 
     {
-       //require(block.timestamp >= unlockDate);
-
        CollectCoin token = CollectCoin(_tokenContract);
 
        //now send all the token balance
@@ -72,10 +73,14 @@ contract PeriodicTimeLockedMonoWallet
             return 0;
         }
 
-        uint unlockedUnits = (uint256(timeDiff) / unlockPeriod) + 1;
+        uint256 unlockedUnits = uint256(timeDiff).div(unlockPeriod).add(1);
 
-        uint multiplier = unlockedUnits * unlockPercentage >= 100 ? 100 : unlockedUnits * unlockPercentage;
+        uint256 multiplier = unlockedUnits.mul(unlockPercentage) >= 100 ? 100 : unlockedUnits.mul(unlockPercentage);
 
-        return (multiplier * totaltokenAmount) / 100 - claimedAmount;
+        uint256 unlockedAmount = multiplier.mul(totaltokenAmount).div(100).sub(claimedAmount);
+
+        require(unlockedAmount <= totaltokenAmount, "Unlocked Amount too high");
+
+        return unlockedAmount;
     }
 }

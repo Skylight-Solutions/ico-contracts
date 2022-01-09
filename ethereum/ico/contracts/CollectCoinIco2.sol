@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.6;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
@@ -151,15 +151,13 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
     */
     function buyTokens(address payable receiver, uint128 customerId, uint256 tokenAmount) stopInEmergency inState(State.Funding) internal returns(uint tokensBought) 
     {
-        require(getState() == State.Funding || getState() == State.Success, "Contract not in Funding or Success state.");
-
         uint weiAmount = msg.value;
 
         // Dust transaction
         require(tokenAmount != 0);
 
         // don't allow investment to exceed the investor cap
-        require(tokenAmountOf[receiver] + tokenAmount <= tokenInvestorCap);
+        require(tokenAmountOf[receiver].add(tokenAmount) <= tokenInvestorCap);
 
         if(investedAmountOf[receiver] == 0) {
             // A new investor
@@ -194,7 +192,7 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
 
     function availableInvestment() external view returns(uint256)
     {
-        return tokenInvestorCap - tokenAmountOf[msg.sender];
+        return tokenInvestorCap.sub(tokenAmountOf[msg.sender]);
     }
 
     /**
