@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.6;
+pragma solidity 0.8.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -25,6 +25,9 @@ contract PeriodicTimeLockedMonoWallet
 
     constructor(ICollectCoinIco _icoContract, uint256 _unlockDate, uint256 _unlockPeriod, uint _unlockPercentage, address _tokenOwner)
     {
+        require(address(_icoContract) != address(0), "_icoContract is invalid");
+        require(_tokenOwner != address(0), "tokenOwner is invalid");
+
         icoContract = _icoContract;
 
         unlockDate = _unlockDate;
@@ -40,8 +43,8 @@ contract PeriodicTimeLockedMonoWallet
     {
        CollectCoin token = CollectCoin(_tokenContract);
 
-       //now send all the token balance
        uint256 unlockedTokenAmount = getUnlockedTokenAmount();
+       require(unlockedTokenAmount > 0, "INSUFFICIENT_BALANCE");
        
        claimedAmountOf[msg.sender] += unlockedTokenAmount;
 

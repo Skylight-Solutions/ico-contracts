@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.6;
+pragma solidity 0.8.6;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -50,13 +50,13 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
     // milestones[0].price = 0.12 * 10 ** 8;
 
     // milestones[1].soldTokenCount = 1000 * 10**18;
-    // milestones[1].price = 0.14 * 10 ** 8;
+    // milestones[1].price = 0.13 * 10 ** 8;
 
-    // milestones[2].soldTokenCount = 2000 * 10**18;
-    // milestones[2].price = 0.16 * 10 ** 8;
+    // milestones[2].soldTokenCount = 2250 * 10**18;
+    // milestones[2].price = 0.14 * 10 ** 8;
 
-    // milestones[3].soldTokenCount = 2500 * 10**18;
-    // milestones[3].price = 0.18 * 10 ** 8;
+    // milestones[3].soldTokenCount = 3750 * 10**18;
+    // milestones[3].price = 0.15 * 10 ** 8;
   }
 
   /// @dev Iterate through milestones. You reach end of milestones when price = 0
