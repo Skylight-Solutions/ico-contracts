@@ -6,11 +6,12 @@ import "./PeriodicTimeLockedMonoWallet.sol";
 
 contract TimeLockedWalletFactory {
  
-    address public owner;
+    address public immutable owner;
     mapping(address => address[]) wallets;
 
     event Created(address wallet, address from, address to, uint256 createdAt);
     event CreatedMono(address wallet, address from, address to, uint256 createdAt);
+    event Initialized(address _wallet, uint256 _unlockDate);
 
     modifier onlyOwner {
         require(msg.sender == owner, "Only Owner");
@@ -39,7 +40,7 @@ contract TimeLockedWalletFactory {
     */
     function initializeTimeLockedWallet(address payable _wallet, uint256 _unlockDate) external onlyOwner {
         PeriodicTimeLockedWallet wallet = PeriodicTimeLockedWallet(_wallet);
-
+        emit Initialized(_wallet, _unlockDate);
         wallet.initialize(_unlockDate);
     }
 

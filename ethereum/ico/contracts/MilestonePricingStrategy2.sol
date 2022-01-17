@@ -107,6 +107,10 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
 
     uint feedPrice = getPriceFromFeed(); // USD / BNB (* 10**8)
     
+    if(feedPrice <= 0) {
+      revert("Invalid Feed Price");  
+    }
+
     // save the amount of tokens from the previous milestones for the loop
     uint currentCapacity = 0;
 
@@ -156,6 +160,10 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
     uint i;
 
     uint feedPrice = getPriceFromFeed(); // USD / BNB (* 10**8)
+
+    if(feedPrice <= 0) {
+      revert("Invalid Feed Price");  
+    }
 
     // save the amount of tokens from the previous milestones for the loop
     uint currentCapacity = 0;
@@ -207,6 +215,10 @@ contract MilestonePricingStrategy2 is IPricingStrategy, Ownable
   /// @return unitPrice == The current price or 0 if we are outside milestone period
   function getCurrentPrice(uint tokensSold) public view returns (uint unitPrice, uint feedPrice) {
     (, int price, , ,) = priceFeed.latestRoundData();
+
+    if(price <= 0) {
+      revert("Invalid Feed Price");  
+    }
 
     (Milestone memory milestone, ) = getCurrentMilestone(tokensSold);
 

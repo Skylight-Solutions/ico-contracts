@@ -14,24 +14,24 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
     using SafeMath for uint256;
 
     /* The token we are selling */
-    CollectCoin public token;
+    CollectCoin public immutable token;
 
     // How we are going to price our offering
-    IPricingStrategy public pricingStrategy;
+    IPricingStrategy public immutable pricingStrategy;
 
     TimeLockedWalletFactory walletFactory;
 
     // tokens will be transfered from this address
-    address payable public multisigWallet;
+    address payable public immutable multisigWallet;
 
     /* Maximum amount of tokens this crowdsale can sell. */
-    uint public maximumSellableTokens;
+    uint public immutable maximumSellableTokens;
 
     /* if the funding goal is not reached, investors may withdraw their funds */
-    uint public minimumFundingGoal;
+    uint public immutable minimumFundingGoal;
 
     /* the maximum one person is allowed to invest in CLCT */
-    uint256 public tokenInvestorCap;
+    uint256 public immutable tokenInvestorCap;
 
     /* How many distinct addresses have invested */
     uint public investorCount = 0;
@@ -42,8 +42,8 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
     /* the UNIX timestamp end date of the ico */
     uint public endsAt;
 
-    uint256 walletUnlockPeriod; 
-    uint256 walletUnlockPercentage;
+    uint256 immutable walletUnlockPeriod; 
+    uint256 immutable walletUnlockPercentage;
 
     /* Has this crowdsale been finalized */
     bool public finalized;
@@ -63,6 +63,12 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
 
     // A new investment was made
     event Invested(address investor, uint weiAmount, uint tokenAmount, uint128 customerId);
+
+    event StartsAtSet(uint startsAt);
+    event EndsAtSet(uint endsAt);
+    event WalletFactorySet(address factoryAddress);
+    event TokenOwnerSet(address tokenOwner);
+    event Finalized();
 
     // A refund has been processed
     event Withdrawn(address indexed refundee, uint256 weiAmount);
@@ -100,32 +106,48 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
                 uint _minimumFundingGoal, uint _maxSellableTokens, uint256 _tokenInvestorCap,
                 uint256 _walletUnlockPeriod, uint256 _walletUnlockPercentage) 
     {
+        if(_token == address(0)) {
+            revert("Invalid Token Address");
+        }
+
+        if(address(_pricingStrategy) == address(0)) {
+            revert("Invalid Pricing Strategy Address");
+        }
+
+        if(_multisigWallet == address(0)) {
+            revert("Invalid Multisig");
+        }
+
+        if(_start == 0) {
+            revert("Invalid start");
+        }
+
+        if(_end == 0) {
+            revert("Invalid end");
+        }
+
+        // Don't mess the dates
+        if(_start >= _end) {
+            revert("Invalid dates");
+        }
+
+        if(_walletUnlockPeriod == 0) {
+            revert("Invalid Unlock Period");
+        }
+
+        if(_walletUnlockPercentage <= 0 || _walletUnlockPercentage > 100) {
+            revert("Invalid Unlock Percentage");
+        }
+
+        startsAt = _start;
+        endsAt = _end;
+
         token = CollectCoin(_token);
         pricingStrategy = _pricingStrategy;
 
         tokenInvestorCap = _tokenInvestorCap;
         
         multisigWallet = _multisigWallet;
-        if(multisigWallet == address(0)) {
-            revert();
-        }
-
-        if(_start == 0) {
-            revert();
-        }
-
-        startsAt = _start;
-
-        if(_end == 0) {
-            revert();
-        }
-
-        endsAt = _end;
-
-        // Don't mess the dates
-        if(startsAt >= endsAt) {
-            revert();
-        }
 
         walletUnlockPeriod = _walletUnlockPeriod;
         walletUnlockPercentage = _walletUnlockPercentage;
@@ -182,12 +204,22 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
         return tokenAmount;
     }
 
-    function setStartsAt(uint256 _startsAt) external onlyOwner {
-        startsAt = _startsAt;
+    function setStartsAt(uint256 _startsAt) external inState(State.Preparing) onlyOwner {
+        if(_startsAt >= endsAt) {
+            revert("Invalid date");
+        }
+
+        startsAt = _startsAt;  
+        emit StartsAtSet(startsAt);
     }
 
     function setEndsAt(uint256 _endsAt) external onlyOwner {
+        if(_endsAt <= startsAt) {
+            revert("Invalid date");
+        }
+
         endsAt = _endsAt;
+        emit EndsAtSet(endsAt);
     }
 
     function availableInvestment() external view returns(uint256)
@@ -210,6 +242,7 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
         require(walletLockDate >= block.timestamp, "LockDate cannot be in the past");
 
         finalized = true;
+        emit Finalized();
 
         timeLockedWallet = walletFactory.newPeriodicTimeLockedMonoWallet(tokenOwner, address(this), walletLockDate, walletUnlockPeriod, walletUnlockPercentage);
 
@@ -219,16 +252,21 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
     }
 
     function setWalletFactory(TimeLockedWalletFactory addr) external override onlyOwner {
+        require(address(addr) != address(0), "Invalid address");
+
         walletFactory = addr;
+        emit WalletFactorySet(address(walletFactory));
     }
 
     function setTokenOwner(address _tokenOwner) external override onlyOwner {
+        require(_tokenOwner != address(0), "Invalid address");
 
         uint balance = token.balanceOf(_tokenOwner);
 
         require(balance >= maximumSellableTokens, "Token owner has not enough tokens!");
         
         tokenOwner = _tokenOwner;
+        emit TokenOwnerSet(tokenOwner);
     }
     
     /**
@@ -323,8 +361,8 @@ contract CollectCoinIco2 is Haltable, ICollectCoinIco  {
     * @param _weiAmount Value in wei involved in the purchase
     */
     function _preValidatePurchase(address _beneficiary, uint256 _weiAmount) internal pure {
-        require(_beneficiary != address(0));
-        require(_weiAmount != 0);
+        require(_beneficiary != address(0), "Invalid beneficiary");
+        require(_weiAmount != 0, "Invalid amount");
     }
 
     /**

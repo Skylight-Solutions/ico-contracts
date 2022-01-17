@@ -38,7 +38,6 @@ contract PeriodicTimeLockedMonoWallet
         unlockPercentage = _unlockPercentage;
     }
 
-    // callable by owner only, after specified time, only for Tokens implementing ERC20
     function withdrawTokens(address _tokenContract) external 
     {
        CollectCoin token = CollectCoin(_tokenContract);
@@ -82,8 +81,10 @@ contract PeriodicTimeLockedMonoWallet
 
         uint256 unlockedAmount = multiplier.mul(totaltokenAmount).div(100).sub(claimedAmount);
 
-        require(unlockedAmount <= totaltokenAmount, "Unlocked Amount too high");
-
+        if(unlockedAmount > totaltokenAmount.sub(claimedAmount)) {
+            revert("Unlocked Amount too high");
+        }
+        
         return unlockedAmount;
     }
 }
