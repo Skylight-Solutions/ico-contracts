@@ -17,7 +17,7 @@
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
     "@chainlink/contracts": "^0.1.7",
-    "@openzeppelin/contracts": "^4.1.0",
+    "@openzeppelin/contracts": "^4.9.5",
     "@truffle/hdwallet-provider": "^1.2.3",
     "ethereum-input-data-decoder": "^0.3.2",
     "moment": "^2.29.1",
